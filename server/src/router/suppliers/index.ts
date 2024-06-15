@@ -12,4 +12,4 @@ export const suppliersRouter = express.Router();
 suppliersRouter.get('/supplies', getAllSupplies);
 suppliersRouter.post('/supplies', createSupply);
 suppliersRouter.put('/supplies/:supplyId', updateSupply);
-suppliersRouter.delete('/supplies/:id', deleteSupply);
+suppliersRouter.delete('/supplies/:supplyId', deleteSupply);
