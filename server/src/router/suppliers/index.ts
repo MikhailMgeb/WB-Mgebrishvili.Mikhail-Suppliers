@@ -1,10 +1,10 @@
 import express from 'express';
 
 import {
-    getAllSupplies,
-    createSupply,
-    updateSupply,
-    deleteSupply,
+  getAllSupplies,
+  createSupply,
+  updateSupply,
+  deleteSupply,
 } from '../../controllers/index';
 
 export const suppliersRouter = express.Router();
