@@ -4,69 +4,71 @@ import { Supply, loadSuppliesFromFile, saveSuppliesToFile } from '../utils/fileU
 
 export const getAllSupplies = (_req: Request, res: Response) => {
   try {
-    const supplies = loadSuppliesFromFile();
-    res.json(supplies);
+    const dataSupplies = loadSuppliesFromFile();
+    res.json(dataSupplies);
   } catch (error) {
-    console.error('Error fetching supplies:', error);
     res.status(500).json({ error: 'Failed to fetch supplies' });
   }
 };
 
 export const createSupply = async (req: Request, res: Response) => {
   try {
-    const createdSupply = req.body as Supply;
-    const supplies = loadSuppliesFromFile();
-    supplies.push(createdSupply);
+    const createdSupply = req.body;
 
-    const existingSupply = supplies.find((supply) => supply.id === createdSupply.id);
+    const dataSupplies = loadSuppliesFromFile();
+    const isCheckSupply = dataSupplies.some((supply) => supply.id === createdSupply.id);
 
-    if (existingSupply) {
+    if (isCheckSupply) {
       return res.status(400).json({ error: 'Supply with this ID already exists' });
     }
 
-    saveSuppliesToFile(supplies);
+    dataSupplies.push(createdSupply);
+    saveSuppliesToFile(dataSupplies);
 
-    res.status(201).json(loadSuppliesFromFile());
+    res.status(201).json({ message: 'Supply successfully created', status: 'success' });
   } catch (error) {
-    console.error('Error creating supply:', error);
     res.status(500).json({ error: 'Failed to create supply' });
   }
 };
 
 export const updateSupply = (req: Request, res: Response) => {
   try {
-    const supplies = loadSuppliesFromFile();
+    const dataSupplies = loadSuppliesFromFile();
     const { supplyId } = req.params;
 
-    const indexToUpdate = supplies.findIndex((supply) => supply.id === supplyId);
+    const indexToUpdate = dataSupplies.findIndex((supply) => supply.id === supplyId);
 
     if (indexToUpdate === -1) {
       return res.status(404).json({ error: 'Supply not found' });
     }
 
     const updatedFields = req.body as Supply;
-    supplies[indexToUpdate] = updatedFields;
+    dataSupplies[indexToUpdate] = updatedFields;
 
-    saveSuppliesToFile(supplies);
+    saveSuppliesToFile(dataSupplies);
 
-    res.json(supplies[indexToUpdate]);
+    res.json({ message: 'Supply successfully update', status: 'success' });
   } catch (error) {
-    console.error('Error updating supply:', error);
     res.status(500).json({ error: 'Failed to update supply' });
   }
 };
 
 export const deleteSupply = (req: Request, res: Response) => {
   try {
-    const supplies = loadSuppliesFromFile();
-    const supplyId = req.params.id;
-    const filteredSupplies = supplies.filter((supply) => supply.id !== supplyId);
+    const dataSupplies = loadSuppliesFromFile();
+    const { supplyId } = req.params;
 
+    const isCheckSupply = dataSupplies.some((supply) => supply.id === supplyId);
+
+    if (!isCheckSupply) {
+      return res.status(400).json({ error: 'There is no supply with this ID.' });
+    }
+
+    const filteredSupplies = dataSupplies.filter((supply) => supply.id !== supplyId);
     saveSuppliesToFile(filteredSupplies);
 
-    res.status(204).end();
+    res.status(200).json({ message: 'Supply successfully deleted', status: 'success' });
   } catch (error) {
-    console.error('Error deleting supply:', error);
     res.status(500).json({ error: 'Failed to delete supply' });
   }
 };
