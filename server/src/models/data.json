@@ -50,5 +50,25 @@
       "warehouseAddress": "пр. Ленинский, д. 7, Новосибирск",
       "status": "В пути"
     }
-  ]
+  ],
+  {
+    "id": "154814",
+    "date": "2024-06-12",
+    "city": "Тверь-Тверская",
+    "quantity": 99922,
+    "supplyType": "Короб",
+    "warehouseName": "Внуково",
+    "warehouseAddress": "пр. Победы, д. 25, Санкт-Петербург",
+    "status": "В пути"
+  },
+  {
+    "id": "154814",
+    "date": "2024-06-12",
+    "city": "New York",
+    "quantity": 99922,
+    "supplyType": "Короб",
+    "warehouseName": "Внуково",
+    "warehouseAddress": "пр. Победы, д. 25, Санкт-Петербург",
+    "status": "В пути"
+  }
 ]
