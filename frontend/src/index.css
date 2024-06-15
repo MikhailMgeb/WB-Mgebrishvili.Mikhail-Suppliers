@@ -1,0 +1,14 @@
+@font-face {
+    font-family: 'ALSHauss-Hairline';
+    src: url('./fonts/ALSHauss-Hairline.ttf') format('truetype');
+}
+
+:root {
+    font-family: 'ALSHauss-Hairline', Arial, sans-serif;
+    background-color: #2d2c32;
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
