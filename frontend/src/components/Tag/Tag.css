@@ -1,0 +1,24 @@
+.Tag {
+    display: inline-flex;
+    align-items: center;
+
+    height: 18px;
+    padding: 2px 4px;
+
+    font-size: 11px;
+    font-weight: 560;
+    text-align: center;
+    letter-spacing: 0.2px;
+    line-height: 14px;
+    border-radius: 6px;
+}
+
+.Tag_supplyStatus_success {
+    color: #85ef89;
+    background-color: #14532b;
+}
+
+.Tag_supplyStatus_warning {
+    color: #fdb172;
+    background-color: #7c3d12;
+}
