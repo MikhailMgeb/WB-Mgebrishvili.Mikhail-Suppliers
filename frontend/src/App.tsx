@@ -1,11 +1,9 @@
-// import MyIcon from './assets/icons/icon-check.svg';
-
-import { Input } from './components/Input/Input';
+import { SearchInput } from './components/SearchInput/SearchInput ';
 
 const App = () => {
   return (
     <div>
-      <Input type="date" />
+      <SearchInput />
     </div>
   );
 };

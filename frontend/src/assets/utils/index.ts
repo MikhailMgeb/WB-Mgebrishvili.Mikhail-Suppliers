@@ -31,4 +31,4 @@ export function getWidth(index: number) {
   return headTableParams[index].width;
 }
 
-export const searchOptionDropDown = ['Номер', 'Дата поставки', 'Город', 'Количество', 'Тип поставки', 'Склад', 'Статус'];
+export const searchOptionDropDown = ['Номер', 'Дата', 'Город', 'Количество', 'Тип', 'Склад', 'Статус'];
