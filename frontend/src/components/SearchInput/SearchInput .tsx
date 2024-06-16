@@ -18,7 +18,7 @@ type SearchInputProps = {
 
 const SearchInput: FC<SearchInputProps> = ({
   disabled = false,
-  placeholder = '',
+  placeholder = 'Поиск...',
   value = '',
   onChange,
 }) => {
