@@ -1,0 +1,43 @@
+.Button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 36px;
+
+    border: none;
+    border-radius: 10px;
+}
+
+.Button-Text {
+    margin: 0;
+
+    font-family: Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 560;
+    line-height: 20px;
+    color: #ffffff;
+}
+
+.Button_theme_alpha {
+    color: #ffffff;
+    background-color: inherit;
+}
+
+.Button_theme_alpha:hover {
+    background-color: #ffffff14;
+}
+
+.Button_theme_base {
+    color: #2d2c32;
+    background-color: #ffffff;
+}
+
+.Button_theme_primary {
+    color: #ffffff;
+    background-color: #6949ff;
+}
+
+.Button_theme_primary:hover {
+    background-color: #6366f1;
+}
