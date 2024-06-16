@@ -5,7 +5,7 @@ import { cnTag } from './Tag.classname';
 import './Tag.css';
 
 type TagProps = {
-  supplyStatus: 'InTransit' | 'delayed';
+  supplyStatus: 'inTransit' | 'delayed';
 };
 
 const Tag: FC<TagProps> = ({ supplyStatus }) => {
@@ -13,7 +13,7 @@ const Tag: FC<TagProps> = ({ supplyStatus }) => {
     <span
       className={cnTag({ supplyStatus })}
     >
-      {supplyStatus === 'InTransit' ? 'В пути' : 'Задерживается'}
+      {supplyStatus === 'inTransit' ? 'В пути' : 'Задерживается'}
     </span>
   );
 };
