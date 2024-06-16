@@ -1,0 +1,5 @@
+table {
+    border-collapse: collapse;
+    grid-template-areas: 'header' 'content';
+    width: 1226px;
+}
