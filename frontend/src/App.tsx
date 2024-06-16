@@ -1,11 +1,11 @@
-import { Button } from './components/Button/Button';
+// import MyIcon from './assets/icons/icon-check.svg';
 
-import MyIcon from './assets/icons/icon-check.svg';
+import { Input } from './components/Input/Input';
 
 const App = () => {
   return (
     <div>
-      <Button scheme="cloudy" text="Просто кнопка" icon={<MyIcon />} modification="alpha" />
+      <Input type="date" />
     </div>
   );
 };
