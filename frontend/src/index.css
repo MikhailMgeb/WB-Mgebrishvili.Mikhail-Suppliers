@@ -1,6 +1,37 @@
 @font-face {
-    font-family: 'ALSHauss-Hairline';
+    font-family: 'ALSHauss';
     src: url('./fonts/ALSHauss-Hairline.ttf') format('truetype');
+    font-weight: 100;
+}
+
+@font-face {
+    font-family: 'ALSHauss';
+    src: url('./fonts/ALSHauss-Light.ttf') format('truetype');
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'ALSHauss';
+    src: url('./fonts/ALSHauss-Regular.ttf') format('truetype');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'ALSHauss';
+    src: url('./fonts/ALSHauss-Medium.ttf') format('truetype');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'ALSHauss';
+    src: url('./fonts/ALSHauss-Bold.ttf') format('truetype');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'ALSHauss';
+    src: url('./fonts/ALSHauss-Black.ttf') format('truetype');
+    font-weight: 900;
 }
 
 :root {
