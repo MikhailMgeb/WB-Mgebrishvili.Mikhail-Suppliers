@@ -21,8 +21,6 @@ const Button: FC<ButtonProps> = ({
     }
   };
 
-  console.log(scheme)
-
   return (
     <button className={cnButton({ theme: scheme === 'cloudy' ? modification : scheme })} onClick={handleClick}>
       {<span className={cnButton('Icon')}>{icon}</span> || null}
