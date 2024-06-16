@@ -1,0 +1,26 @@
+.SearchInput {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    width: 360px;
+    padding: 5px;
+
+    background-color: #ffffff14;
+    border-radius: 14px;
+}
+
+
+
+.SearchInput-Input {
+    flex: 1;
+
+    width: 165px;
+    padding: 0 12px;
+
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
