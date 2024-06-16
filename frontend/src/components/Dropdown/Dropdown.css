@@ -9,15 +9,18 @@
 }
 
 .Dropdown-Select {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: #ffffff14;
     cursor: pointer;
-    border: none;
+
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+
+    padding: 10px;
+
+    background-color: #ffffff14;
+    border: 1px solid #cccccc;
+    border: none;
+    border-radius: 4px;
 }
 
 .Dropdown-Select:hover {
@@ -25,8 +28,8 @@
 }
 
 .Dropdown-Arrow {
-    transition: transform 0.2s;
     background-position: right 10px center;
+    transition: transform 0.2s;
 }
 
 .Dropdown-Arrow.Dropdown-Arrow_open {
@@ -35,27 +38,30 @@
 
 .Dropdown-List {
     position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    border: 1px solid #ccc;
-    border-top: none;
-    background-color: #fff;
-    border-radius: 8px;
     z-index: 10;
-    max-height: 200px;
+    top: 100%;
+    right: 0;
+    left: 0;
+
     overflow-y: auto;
+
+    max-height: 200px;
+
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-top: none;
+    border-radius: 8px;
 }
 
 .Dropdown-Option {
-    background-color: #ffffff;
-    padding: 12px 16px;
     cursor: pointer;
+    padding: 12px 16px;
+    background-color: #ffffff;
 }
 
 .Dropdown-Option:hover {
-    background-color: #f0f0f3;
     cursor: pointer;
+    background-color: #f0f0f3;
 }
 
 .Dropdown-Option:hover {
