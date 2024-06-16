@@ -13,7 +13,7 @@ type ButtonProps = {
 };
 
 const Button: FC<ButtonProps> = ({
-  text, icon, scheme, modification, onClick,
+  text, icon, scheme, modification = 'base', onClick,
 }) => {
   const handleClick = () => {
     if (onClick) {
@@ -21,9 +21,11 @@ const Button: FC<ButtonProps> = ({
     }
   };
 
+  console.log(scheme)
+
   return (
     <button className={cnButton({ theme: scheme === 'cloudy' ? modification : scheme })} onClick={handleClick}>
-      {icon || null}
+      {<span className={cnButton('Icon')}>{icon}</span> || null}
       <p className={cnButton('Text')}>{text}</p>
     </button>
   );
