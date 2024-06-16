@@ -5,7 +5,9 @@
 
 
 .Dropdown-Option {
+    cursor: pointer;
     padding: 12px 16px;
+    background-color: #ffffff;
 }
 
 .Dropdown-Select {
@@ -53,17 +55,7 @@
     border-radius: 8px;
 }
 
-.Dropdown-Option {
-    cursor: pointer;
-    padding: 12px 16px;
-    background-color: #ffffff;
-}
-
 .Dropdown-Option:hover {
     cursor: pointer;
-    background-color: #f0f0f3;
-}
-
-.Dropdown-Option:hover {
     background-color: #f1f1f1;
 }
