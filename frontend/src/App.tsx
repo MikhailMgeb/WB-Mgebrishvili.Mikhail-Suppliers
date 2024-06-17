@@ -1,9 +1,9 @@
-import { SearchInput } from './components/SearchInput/SearchInput ';
+import { Table } from './components/Table/Table';
 
 export const App = () => {
   return (
     <div>
-      <SearchInput />
+      <Table />
     </div>
   );
 };

@@ -9,9 +9,9 @@ import './Table.css';
 
 export const Table = () => {
   return (
-    <table className={cnTable()}>
+    <section className={cnTable()}>
       <TableHead tableHeaders={headTableParams} />
       <TableRow cards={cards} />
-    </table>
+    </section>
   );
 };

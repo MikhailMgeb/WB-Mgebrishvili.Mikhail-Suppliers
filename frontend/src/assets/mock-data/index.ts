@@ -9,7 +9,7 @@ export const cards: SupplyData[] = [
     supplyType: 'Короб',
     warehouseName: 'Внуково',
     warehouseAddress: 'пр. Победы, д. 25, Санкт-Петербург',
-    status: 'В пути',
+    status: 'Задерживается',
   },
   {
     id: '154222',

@@ -18,28 +18,28 @@ type TableRowProps = {
 
 export const TableRow: FC<TableRowProps> = ({ cards }) => {
   return (
-    <tbody className={cnTableRow()}>
+    <div className={cnTableRow()}>
       {cards.map((card) => (
-        <tr className={cnTableRow('Row')} key={card.id}>
-          <td className={cnTableRow('Cell')} style={{ width: getWidth(0) }}>{card.id}</td>
-          <td className={cnTableRow('Cell')} style={{ width: getWidth(1) }}>{card.date}</td>
-          <td className={cnTableRow('Cell')} style={{ width: getWidth(2) }}>{card.city}</td>
-          <td className={cnTableRow('Cell')} style={{ width: getWidth(3) }}>{`${card.quantity} шт.`}</td>
-          <td className={cnTableRow('Cell')} style={{ width: getWidth(4) }}>{card.supplyType}</td>
-          <td className={cnTableRow('Cell')} style={{ width: getWidth(5) }}>
+        <div className={cnTableRow('Row')} key={card.id}>
+          <div className={cnTableRow('Cell')} style={{ width: getWidth(0) }}>{card.id}</div>
+          <div className={cnTableRow('Cell')} style={{ width: getWidth(1) }}>{card.date}</div>
+          <div className={cnTableRow('Cell')} style={{ width: getWidth(2) }}>{card.city}</div>
+          <div className={cnTableRow('Cell')} style={{ width: getWidth(3) }}>{`${card.quantity} шт.`}</div>
+          <div className={cnTableRow('Cell')} style={{ width: getWidth(4) }}>{card.supplyType}</div>
+          <div className={cnTableRow('Cell')} style={{ width: getWidth(5) }}>
             <div className={cnTableRow('Warehouse')}>
               <div className={cnTableRow('WarehouseName')}>{card.warehouseName}</div>
-              <div className={cnTableRow('warehouseAddress')}>{card.warehouseAddress}</div>
+              <div className={cnTableRow('WarehouseAddress')}>{card.warehouseAddress}</div>
             </div>
-          </td>
-          <td className={cnTableRow('Cell')} style={{ width: 118 }}>
+          </div>
+          <div className={cnTableRow('Cell')} style={{ width: getWidth(6) }}>
             {card.status === 'В пути' ? <Tag supplyStatus="inTransit" /> : <Tag supplyStatus="delayed" />}
-          </td>
-          <td className={cnTableRow('Cell')}>
+          </div>
+          <div className={cnTableRow('Cell')}>
             <Button scheme="cloudy" modification="alpha" icon={<IconMenu />} />
-          </td>
-        </tr>
+          </div>
+        </div>
       ))}
-    </tbody>
+    </div>
   );
 };

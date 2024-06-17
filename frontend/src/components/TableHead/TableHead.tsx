@@ -13,12 +13,12 @@ type TableHeadProps = {
 
 export const TableHead: FC<TableHeadProps> = ({ tableHeaders }) => {
   return (
-    <thead className={cnTableHead()}>
-      <tr className={cnTableHead('TableRow')}>
+    <div className={cnTableHead()}>
+      <div className={cnTableHead('Row')}>
         {tableHeaders.map((title) => (
-          <th className={cnTableHead('TableCell')} key={uid()} style={{ width: title.width }}>{title.title}</th>
+          <div className={cnTableHead('Cell')} key={uid()} style={{ width: title.width }}>{title.title}</div>
         ))}
-      </tr>
-    </thead>
+      </div>
+    </div>
   );
 };

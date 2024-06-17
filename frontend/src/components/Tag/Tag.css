@@ -5,6 +5,7 @@
     height: 18px;
     padding: 2px 4px;
 
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 11px;
     font-weight: 560;
     line-height: 14px;
@@ -14,12 +15,12 @@
     border-radius: 6px;
 }
 
-.Tag_supplyStatus_success {
+.Tag_supplyStatus_inTransit {
     color: #85ef89;
     background-color: #14532b;
 }
 
-.Tag_supplyStatus_warning {
+.Tag_supplyStatus_delayed {
     color: #fdb172;
     background-color: #7c3d12;
 }

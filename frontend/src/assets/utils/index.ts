@@ -1,14 +1,14 @@
 export const headTableParams = [{
   title: 'Номер',
-  width: 98,
+  width: 100,
 },
 {
   title: 'Дата поставки',
-  width: 126,
+  width: 128,
 },
 {
   title: 'Город',
-  width: 162,
+  width: 164,
 },
 {
   title: 'Количество',
