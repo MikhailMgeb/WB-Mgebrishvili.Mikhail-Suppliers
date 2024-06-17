@@ -1,9 +1,9 @@
 import type { ChangeEvent, FC } from 'react';
 
-import { Dropdown } from '../Dropdown/Dropdown';
+// import { Dropdown } from '../Dropdown/Dropdown';
 
 import SearchIcon from '../../assets/icons/icon-search.svg';
-import { searchOptionDropDown } from '../../assets/utils';
+// import { searchOptionDropDown } from '../../assets/utils';
 
 import { cnSearchInput } from './SearchInput .classname';
 
@@ -30,7 +30,7 @@ export const SearchInput: FC<SearchInputProps> = ({
 
   return (
     <div className={cnSearchInput()}>
-      <Dropdown options={searchOptionDropDown} />
+      {/* <Dropdown options={['searchOptionDropDown']} />  */}
       <input
         className={cnSearchInput('Input')}
         value={value}

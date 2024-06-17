@@ -1,5 +1,3 @@
-import type { FC } from 'react';
-
 import { cnTag } from './Tag.classname';
 
 import './Tag.css';
@@ -8,7 +6,7 @@ type TagProps = {
   supplyStatus: 'inTransit' | 'delayed';
 };
 
-export const Tag: FC<TagProps> = ({ supplyStatus }) => {
+export const Tag = ({ supplyStatus }: TagProps) => {
   return (
     <span
       className={cnTag({ supplyStatus })}

@@ -2,7 +2,7 @@ import { SupplyData } from '../../types/supply';
 
 export const cards: SupplyData[] = [
   {
-    id: '154814',
+    id: '1548141',
     date: '2024-06-12',
     city: 'Тверь',
     quantity: 99922,
@@ -10,9 +10,10 @@ export const cards: SupplyData[] = [
     warehouseName: 'Внуково',
     warehouseAddress: 'пр. Победы, д. 25, Санкт-Петербург',
     status: 'Задерживается',
+    key: '1',
   },
   {
-    id: '154222',
+    id: '1542222',
     date: '2024-06-12',
     city: 'Москва',
     quantity: 2333,
@@ -20,9 +21,10 @@ export const cards: SupplyData[] = [
     warehouseName: 'Белая дача',
     warehouseAddress: 'пр. Ленинский, д. 7, Новосибирск',
     status: 'В пути',
+    key: '2',
   },
   {
-    id: '154333',
+    id: '1543333',
     date: '2024-06-12',
     city: 'Москва',
     quantity: 2312,
@@ -30,9 +32,10 @@ export const cards: SupplyData[] = [
     warehouseName: 'Белая дача',
     warehouseAddress: 'пр. Ленинский, д. 7, Новосибирск',
     status: 'Задерживается',
+    key: '3',
   },
   {
-    id: '154444',
+    id: '1544444',
     date: '2024-06-12',
     city: 'Москва',
     quantity: 1052310,
@@ -40,9 +43,10 @@ export const cards: SupplyData[] = [
     warehouseName: 'Белая дача',
     warehouseAddress: 'пр. Ленинский, д. 7, Новосибирск',
     status: 'В пути',
+    key: '4',
   },
   {
-    id: '154555',
+    id: '1545555',
     date: '2024-06-12',
     city: 'Москва',
     quantity: 10210,
@@ -50,5 +54,6 @@ export const cards: SupplyData[] = [
     warehouseName: 'Белая дача',
     warehouseAddress: 'пр. Ленинский, д. 7, Новосибирск',
     status: 'В пути',
+    key: '5',
   },
 ];

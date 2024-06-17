@@ -1,7 +1,7 @@
-import { cards } from '../../assets/mock-data';
-import { TableRow } from '../TableRow/TableRow';
-import { TableHead } from '../TableHead/TableHead';
-import { headTableParams } from '../../assets/utils';
+// import { cards } from '../../assets/mock-data';
+// import { TableRow } from '../TableRow/TableRow';
+// import { TableHead } from '../TableHead/TableHead';
+// import { headTableParams } from '../../assets/utils';
 
 import { cnTable } from './Table.classname';
 
@@ -10,8 +10,7 @@ import './Table.css';
 export const Table = () => {
   return (
     <section className={cnTable()}>
-      <TableHead tableHeaders={headTableParams} />
-      <TableRow cards={cards} />
+
     </section>
   );
 };
