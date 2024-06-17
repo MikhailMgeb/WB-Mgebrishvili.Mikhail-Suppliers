@@ -1,8 +1,8 @@
-.MenuDropdown-Menu {
+.MenuDropdown {
     position: absolute;
     z-index: 1000;
-    bottom: 150%;
-    left: -148px;
+    bottom: -90px;
+    left: -140px;
 
     width: 192px;
 

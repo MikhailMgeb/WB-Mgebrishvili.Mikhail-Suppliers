@@ -1,4 +1,6 @@
-import { FC } from 'react';
+import {
+  FC, useEffect, useRef, useState,
+} from 'react';
 
 import { getWidth } from '../../assets/utils';
 import { MenuDropdown } from '../MenuDropdown/MenuDropdown';
@@ -17,9 +19,36 @@ type TableRowProps = {
 };
 
 export const TableRow: FC<TableRowProps> = ({ cards }) => {
+  // eslint-disable-next-line max-len
+  const [openMenuIndexes, setOpenMenuIndexes] = useState<boolean[]>(Array(cards.length).fill(false));
+  const menuRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  const handleOpenMenuClick = (index: number) => {
+    const newOpenMenuIndexes = Array(cards.length).fill(false);
+    newOpenMenuIndexes[index] = true;
+    setOpenMenuIndexes(newOpenMenuIndexes);
+  };
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (!menuRefs.current.some((ref) => ref?.contains(event.target as Node))) {
+      setOpenMenuIndexes(Array(cards.length).fill(false));
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  const setMenuRef = (el: HTMLDivElement | null, index: number) => {
+    menuRefs.current[index] = el;
+  };
+
   return (
     <div className={cnTableRow()}>
-      {cards.map((card) => (
+      {cards.map((card, index) => (
         <div className={cnTableRow('Row')} key={card.id}>
           <div className={cnTableRow('Cell')} style={{ width: getWidth(0) }}>{card.id}</div>
           <div className={cnTableRow('Cell')} style={{ width: getWidth(1) }}>{card.date}</div>
@@ -35,9 +64,11 @@ export const TableRow: FC<TableRowProps> = ({ cards }) => {
           <div className={cnTableRow('Cell')} style={{ width: getWidth(6) }}>
             {card.status === 'В пути' ? <Tag supplyStatus="inTransit" /> : <Tag supplyStatus="delayed" />}
           </div>
-          <div className={cnTableRow('Cell')}>
-            <Button scheme="cloudy" modification="alpha" icon={<IconMenu />} />
-            <MenuDropdown options={['Редактировать', 'Удалить']} />
+          <div className={cnTableRow('Cell', { action: true })}>
+            <Button scheme="cloudy" modification="alpha" icon={<IconMenu />} onClick={() => handleOpenMenuClick(index)} />
+            <div ref={(el) => setMenuRef(el, index)}>
+              <MenuDropdown options={['Редактировать', 'Удалить']} isOpenMenu={openMenuIndexes[index]} />
+            </div>
           </div>
         </div>
       ))}
