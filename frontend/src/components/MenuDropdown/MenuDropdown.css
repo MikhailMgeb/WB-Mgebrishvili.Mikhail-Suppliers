@@ -1,0 +1,32 @@
+.MenuDropdown-Menu {
+    position: absolute;
+    z-index: 1000;
+    bottom: 150%;
+    left: -148px;
+
+    width: 192px;
+
+    background-color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 0 0 1px #e3e4ea inset;
+}
+
+.MenuDropdown-Item {
+    cursor: pointer;
+
+    padding: 10px 15px;
+
+    font-family: 'ALSHauss', Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 440;
+    line-height: 20px;
+    color: #000000;
+}
+
+.MenuDropdown-Item:hover {
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 0 0 1px #e3e4ea inset;
+}
