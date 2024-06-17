@@ -12,7 +12,7 @@ type ButtonProps = {
   onClick?: () => void;
 };
 
-const Button: FC<ButtonProps> = ({
+export const Button: FC<ButtonProps> = ({
   text, icon, scheme, modification = 'base', onClick,
 }) => {
   const handleClick = () => {
@@ -28,5 +28,3 @@ const Button: FC<ButtonProps> = ({
     </button>
   );
 };
-
-export { Button };

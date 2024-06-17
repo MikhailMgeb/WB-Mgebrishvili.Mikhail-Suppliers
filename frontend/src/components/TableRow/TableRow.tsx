@@ -16,7 +16,7 @@ type TableRowProps = {
   cards: SupplyData[];
 };
 
-const TableRow: FC<TableRowProps> = ({ cards }) => {
+export const TableRow: FC<TableRowProps> = ({ cards }) => {
   return (
     <tbody className={cnTableRow()}>
       {cards.map((card) => (
@@ -43,5 +43,3 @@ const TableRow: FC<TableRowProps> = ({ cards }) => {
     </tbody>
   );
 };
-
-export { TableRow };

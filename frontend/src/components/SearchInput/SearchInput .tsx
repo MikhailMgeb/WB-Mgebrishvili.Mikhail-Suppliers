@@ -16,7 +16,7 @@ type SearchInputProps = {
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 };
 
-const SearchInput: FC<SearchInputProps> = ({
+export const SearchInput: FC<SearchInputProps> = ({
   disabled = false,
   placeholder = 'Поиск...',
   value = '',
@@ -43,5 +43,3 @@ const SearchInput: FC<SearchInputProps> = ({
     </div>
   );
 };
-
-export { SearchInput };

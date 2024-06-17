@@ -1,11 +1,9 @@
 import { SearchInput } from './components/SearchInput/SearchInput ';
 
-const App = () => {
+export const App = () => {
   return (
     <div>
       <SearchInput />
     </div>
   );
 };
-
-export { App };

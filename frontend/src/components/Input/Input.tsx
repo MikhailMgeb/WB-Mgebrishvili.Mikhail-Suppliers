@@ -14,7 +14,7 @@ type InputProps = {
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 };
 
-const Input: FC<InputProps> = ({
+export const Input: FC<InputProps> = ({
   className,
   disabled = false,
   rightIcon,
@@ -43,5 +43,3 @@ const Input: FC<InputProps> = ({
     </div>
   );
 };
-
-export { Input };

@@ -12,7 +12,7 @@ type DropdownProps = {
   options: string[];
 };
 
-const Dropdown: FC<DropdownProps> = ({ options }) => {
+export const Dropdown: FC<DropdownProps> = ({ options }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(options[0]);
 
@@ -44,5 +44,3 @@ const Dropdown: FC<DropdownProps> = ({ options }) => {
     </div>
   );
 };
-
-export { Dropdown };

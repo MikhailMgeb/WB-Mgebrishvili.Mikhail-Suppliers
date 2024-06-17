@@ -8,7 +8,7 @@ type TagProps = {
   supplyStatus: 'inTransit' | 'delayed';
 };
 
-const Tag: FC<TagProps> = ({ supplyStatus }) => {
+export const Tag: FC<TagProps> = ({ supplyStatus }) => {
   return (
     <span
       className={cnTag({ supplyStatus })}
@@ -17,5 +17,3 @@ const Tag: FC<TagProps> = ({ supplyStatus }) => {
     </span>
   );
 };
-
-export { Tag };

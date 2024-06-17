@@ -7,7 +7,7 @@ import { cnTable } from './Table.classname';
 
 import './Table.css';
 
-const Table = () => {
+export const Table = () => {
   return (
     <table className={cnTable()}>
       <TableHead tableHeaders={headTableParams} />
@@ -15,5 +15,3 @@ const Table = () => {
     </table>
   );
 };
-
-export { Table };

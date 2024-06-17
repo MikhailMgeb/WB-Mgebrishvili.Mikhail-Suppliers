@@ -11,7 +11,7 @@ type TableHeadProps = {
   tableHeaders: TitleParams[];
 };
 
-const TableHead: FC<TableHeadProps> = ({ tableHeaders }) => {
+export const TableHead: FC<TableHeadProps> = ({ tableHeaders }) => {
   return (
     <thead className={cnTableHead()}>
       <tr className={cnTableHead('TableRow')}>
@@ -22,5 +22,3 @@ const TableHead: FC<TableHeadProps> = ({ tableHeaders }) => {
     </thead>
   );
 };
-
-export { TableHead };
