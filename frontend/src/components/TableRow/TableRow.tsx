@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import { getWidth } from '../../assets/utils';
-
+import { MenuDropdown } from '../MenuDropdown/MenuDropdown';
 import { SupplyData } from '../../types/supply';
 import { Tag } from '../Tag/Tag';
 import { Button } from '../Button/Button';
@@ -37,6 +37,7 @@ export const TableRow: FC<TableRowProps> = ({ cards }) => {
           </div>
           <div className={cnTableRow('Cell')}>
             <Button scheme="cloudy" modification="alpha" icon={<IconMenu />} />
+            <MenuDropdown options={['Редактировать', 'Удалить']} />
           </div>
         </div>
       ))}
