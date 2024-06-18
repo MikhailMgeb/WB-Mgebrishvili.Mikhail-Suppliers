@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import type { FC } from 'react';
 import { uid } from 'uid';
 
 import ChevronDown from '../../assets/icons/icon-chevron-down.svg';
@@ -12,7 +11,7 @@ type DropdownProps = {
   options: string[];
 };
 
-export const Dropdown: FC<DropdownProps> = ({ options }) => {
+export const Dropdown = ({ options }: DropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(options[0]);
 

@@ -1,5 +1,3 @@
-import type { FC } from 'react';
-
 import { cnButton } from './Button.classname';
 
 import './Button.css';
@@ -12,9 +10,9 @@ type ButtonProps = {
   onClick?: () => void;
 };
 
-export const Button: FC<ButtonProps> = ({
+export const Button = ({
   text, icon, scheme, modification = 'base', onClick,
-}) => {
+}: ButtonProps) => {
   const handleClick = () => {
     if (onClick) {
       onClick();

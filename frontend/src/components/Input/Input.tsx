@@ -1,4 +1,4 @@
-import type { ChangeEvent, FC } from 'react';
+import type { ChangeEvent } from 'react';
 
 import { cnInput } from './Input.classname';
 
@@ -14,7 +14,7 @@ type InputProps = {
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 };
 
-export const Input: FC<InputProps> = ({
+export const Input = ({
   className,
   disabled = false,
   rightIcon,
@@ -22,7 +22,7 @@ export const Input: FC<InputProps> = ({
   type = 'text',
   value = '',
   onChange,
-}) => {
+}: InputProps) => {
   const handleChangeValue = (event: ChangeEvent<HTMLInputElement>) => {
     if (onChange) {
       onChange(event);

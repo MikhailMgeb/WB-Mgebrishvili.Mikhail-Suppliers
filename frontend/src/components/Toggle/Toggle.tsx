@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { useState } from 'react';
 
 import { cnToggle } from './Toggle.classname';
 
@@ -10,7 +10,7 @@ type ToggleProps = {
   onToggle: (active: boolean) => void;
 };
 
-export const Toggle: FC<ToggleProps> = ({ scheme, initialActive, onToggle }) => {
+export const Toggle = ({ scheme, initialActive, onToggle }: ToggleProps) => {
   const [active, setActive] = useState(initialActive);
 
   const handleChange = () => {

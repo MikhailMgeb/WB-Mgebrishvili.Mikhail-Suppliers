@@ -1,4 +1,4 @@
-import type { ChangeEvent, FC } from 'react';
+import type { ChangeEvent } from 'react';
 
 // import { Dropdown } from '../Dropdown/Dropdown';
 
@@ -16,12 +16,12 @@ type SearchInputProps = {
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 };
 
-export const SearchInput: FC<SearchInputProps> = ({
+export const SearchInput = ({
   disabled = false,
   placeholder = 'Поиск...',
   value = '',
   onChange,
-}) => {
+}: SearchInputProps) => {
   const handleChangeValue = (event: ChangeEvent<HTMLInputElement>) => {
     if (onChange) {
       onChange(event);
