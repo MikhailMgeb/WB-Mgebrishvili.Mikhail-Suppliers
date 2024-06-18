@@ -1,0 +1,32 @@
+.Supplies {
+    margin: 30px 0;
+}
+
+.Supplies-Header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    max-width: 1226px;
+    height: 40px;
+    padding: 2px;
+}
+
+.Supplies-Title {
+    max-width: 626px;
+}
+
+.Supplies-TitleText {
+    margin: 0;
+
+    font-size: 32px;
+    font-weight: 680;
+    line-height: 40px;
+    color: #ffffff;
+}
+
+.Supplies-ActionMenu {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}

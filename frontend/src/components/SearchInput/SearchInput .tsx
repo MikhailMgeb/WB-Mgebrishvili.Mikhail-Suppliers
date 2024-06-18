@@ -5,6 +5,8 @@ import type { ChangeEvent } from 'react';
 import SearchIcon from '../../assets/icons/icon-search.svg';
 // import { searchOptionDropDown } from '../../assets/utils';
 
+import { Dropdown } from '../Dropdown/Dropdown';
+
 import { cnSearchInput } from './SearchInput .classname';
 
 import './SearchInput .css';
@@ -30,7 +32,7 @@ export const SearchInput = ({
 
   return (
     <div className={cnSearchInput()}>
-      {/* <Dropdown options={['searchOptionDropDown']} />  */}
+      <Dropdown options={['По дате', 'Статусу', 'По номеру', 'По городу']} type="search" />
       <input
         className={cnSearchInput('Input')}
         value={value}
