@@ -12,18 +12,16 @@ type NavBarProps = {
 export const NavBar = ({ navItems }: NavBarProps) => {
   return (
     <nav className={cnNavBar()}>
-      <ul className={cnNavBar('List')}>
-        {navItems.map((item) => (
-          <li className={cnNavBar('Item')} key={item.id}>
-            <NavLink
-              to={item.to}
-              className={cnNavBar('Link')}
-            >
-              {item.label}
-            </NavLink>
-          </li>
-        ))}
-      </ul>
+      {navItems.map((item) => (
+
+        <NavLink
+          to={item.to}
+          className={cnNavBar('Link')}
+        >
+          {item.label}
+          {/* {({ isActive }) => { }} */}
+        </NavLink>
+      ))}
     </nav>
   );
 };

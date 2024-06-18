@@ -144,17 +144,17 @@ export const TableView = ({ cards, onDelete, onEdit }: TableRowProps) => {
           />
           <div ref={(el) => (menuRefs.current[rowIndex] = el)}>
             {openMenuIndex === rowIndex && (
-            <MenuDropdown
-              options={['Редактировать', 'Удалить']}
-              onSelect={(option: string) => {
-                if (option === 'Редактировать') {
-                  handleEditClick(record.id);
-                } else if (option === 'Удалить') {
-                  handleDeleteClick(record.id);
-                }
-              }}
-              isOpenMenu
-            />
+              <MenuDropdown
+                options={['Редактировать', 'Удалить']}
+                onSelect={(option: string) => {
+                  if (option === 'Редактировать') {
+                    handleEditClick(record.id);
+                  } else if (option === 'Удалить') {
+                    handleDeleteClick(record.id);
+                  }
+                }}
+                isOpenMenu
+              />
             )}
           </div>
         </div>
