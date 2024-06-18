@@ -57,3 +57,11 @@ export const cards: SupplyData[] = [
     key: '5',
   },
 ];
+
+export const navItems = [
+  { id: '1', to: '/', label: 'Поставка' },
+  { id: '2', to: '/goods', label: 'Товары' },
+  { id: '3', to: '/pricing-and-discounts', label: 'Цены и скидки' },
+  { id: '4', to: '/analytics', label: 'Аналитика' },
+  { id: '5', to: '/advertising', label: 'Реклама' },
+];
