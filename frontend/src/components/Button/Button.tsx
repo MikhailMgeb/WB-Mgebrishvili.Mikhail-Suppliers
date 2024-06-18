@@ -1,5 +1,8 @@
-import { cnButton } from './Button.classname';
+import { cn } from '@bem-react/classname';
+
 import './Button.css';
+
+const cnButton = cn('Button');
 
 type ButtonProps = {
   text?: string;

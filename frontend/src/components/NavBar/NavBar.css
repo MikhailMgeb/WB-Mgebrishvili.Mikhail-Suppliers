@@ -1,10 +1,12 @@
 .NavBar {
-    max-width: 486px;
-    margin: 0;
-    padding: 0;
     display: flex;
     gap: 2px;
     justify-content: space-evenly;
+
+    max-width: 486px;
+    margin: 0;
+    padding: 0;
+
     background-color: #ffffff14;
     border-radius: 10px;
 }
@@ -14,8 +16,6 @@
 }
 
 .NavBar-Link {
-    text-decoration: none;
-
     padding: 7px;
 
     font-family: 'ALSHauss', Helvetica, sans-serif;
@@ -23,11 +23,13 @@
     font-weight: 560;
     line-height: 20px;
     color: #ffffff;
+    text-decoration: none;
 
     border-radius: 10px;
 }
 
 .NavBar-Link.active {
     color: #000000;
-    background-color: #ffffff
+    background-color: #ffffff;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }

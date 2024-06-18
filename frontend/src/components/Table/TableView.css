@@ -64,14 +64,14 @@
 }
 
 table {
-    border-collapse: separate;
     border-spacing: 0 16px;
+    border-collapse: separate;
 }
 
 tr td {
+    padding: 5px;
     border: 1px solid transparent;
     transition: all ease 0.3s;
-    padding: 5px;
 }
 
 tr td:first-child {

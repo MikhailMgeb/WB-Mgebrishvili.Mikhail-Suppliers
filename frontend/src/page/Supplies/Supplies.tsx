@@ -18,6 +18,9 @@ export const Supplies = () => {
     console.log(`Изменить: ${id}`);
   };
 
+  const handleClick = () => {
+    console.log('Добавить товар');
+  };
   // const columns = useMemo(
   //   () => getMainTableColumns(handleOpenModal),
   //   [handleOpenModal],
@@ -33,7 +36,7 @@ export const Supplies = () => {
         </div>
         <div className={cnSupplies('ActionMenu')}>
           <div className={cnSupplies('AddSupply')}>
-            <Button text="Добавить поставку" icon={<AddIcon />} size="large" scheme="cloudy" />
+            <Button text="Добавить поставку" icon={<AddIcon />} size="large" scheme="cloudy" onClick={handleClick} />
           </div>
           <div className={cnSupplies('Search')}>
             <SearchInput />

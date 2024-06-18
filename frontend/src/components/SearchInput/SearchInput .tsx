@@ -1,10 +1,6 @@
 import type { ChangeEvent } from 'react';
 
-// import { Dropdown } from '../Dropdown/Dropdown';
-
 import SearchIcon from '../../assets/icons/icon-search.svg';
-// import { searchOptionDropDown } from '../../assets/utils';
-
 import { Dropdown } from '../Dropdown/Dropdown';
 
 import { cnSearchInput } from './SearchInput .classname';
@@ -41,7 +37,7 @@ export const SearchInput = ({
         disabled={disabled}
         onChange={handleChangeValue}
       />
-      <span><SearchIcon /></span>
+      <span className={cnSearchInput('Icon')}><SearchIcon /></span>
     </div>
   );
 };

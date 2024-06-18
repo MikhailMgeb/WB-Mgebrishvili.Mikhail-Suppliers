@@ -5,7 +5,13 @@
 
 .Dropdown-Option {
     cursor: pointer;
+
     padding: 12px 16px;
+
+    font-family: 'ALSHauss', Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 560;
+
     background-color: #ffffff;
 }
 
@@ -28,6 +34,7 @@
 .Dropdown-Select_type_search {
     width: 133px;
     padding: 2px;
+    color: #ffffff;
 }
 
 .Dropdown-Select:hover {

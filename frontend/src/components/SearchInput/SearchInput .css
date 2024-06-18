@@ -11,8 +11,6 @@
     border-radius: 14px;
 }
 
-
-
 .SearchInput-Input {
     flex: 1;
 
@@ -23,9 +21,13 @@
     font-size: 16px;
     font-weight: 440;
     line-height: 20px;
+    color: #ffffff;
 
     background: transparent;
     border: none;
     outline: none;
 }
 
+.SearchInput-Icon {
+    color: #ffffff3d;
+}
