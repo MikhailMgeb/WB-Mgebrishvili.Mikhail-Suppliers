@@ -1,3 +1,5 @@
+import { cn } from '@bem-react/classname';
+
 import { Button } from '../../components/Button/Button';
 
 import AddIcon from '../../assets/icons/icon-plus.svg';
@@ -5,9 +7,9 @@ import { SearchInput } from '../../components/SearchInput/SearchInput ';
 import { TableView } from '../../components/Table/TableView';
 import { cards } from '../../assets/mock-data';
 
-import { cnSupplies } from './Supplies.classname';
-
 import './Supplies.css';
+
+const cnSupplies = cn('Supplies');
 
 export const Supplies = () => {
   const handleDelete = (id: string) => {

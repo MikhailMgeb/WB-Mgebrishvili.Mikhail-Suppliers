@@ -28,7 +28,7 @@ export const SearchInput = ({
 
   return (
     <div className={cnSearchInput()}>
-      <Dropdown options={['По дате', 'Статусу', 'По номеру', 'По городу']} type="search" />
+      <Dropdown options={['По номеру', 'По городу', 'По типу поставки', 'По статусу']} type="search" />
       <input
         className={cnSearchInput('Input')}
         value={value}

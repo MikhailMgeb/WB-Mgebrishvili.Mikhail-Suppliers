@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
+import { cn } from '@bem-react/classname';
 
 import Logo from './assets/icons/wb-logo.svg';
 
@@ -15,9 +16,10 @@ import { Goods } from './page/Goods/Goods';
 
 import { NavBar } from './components/NavBar/NavBar';
 import { navItems } from './assets/mock-data';
-import { cnApp } from './App.classname';
 
 import './App.css';
+
+const cnApp = cn('App');
 
 export const App = () => {
   return (

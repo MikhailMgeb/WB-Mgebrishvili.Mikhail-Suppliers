@@ -32,9 +32,13 @@
 }
 
 .Dropdown-Select_type_search {
+    overflow: hidden;
+
     width: 133px;
     padding: 2px;
+
     color: #ffffff;
+    white-space: nowrap;
 }
 
 .Dropdown-Select:hover {
