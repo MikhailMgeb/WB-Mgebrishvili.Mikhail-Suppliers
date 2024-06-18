@@ -1,8 +1,9 @@
 import type { ChangeEvent } from 'react';
-
-import { cnInput } from './Input.classname';
+import { cn } from '@bem-react/classname';
 
 import './Input.css';
+
+const cnInput = cn('Input');
 
 type InputProps = {
   className?: string;

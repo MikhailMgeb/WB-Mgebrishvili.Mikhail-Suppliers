@@ -1,11 +1,12 @@
 import type { ChangeEvent } from 'react';
+import { cn } from '@bem-react/classname';
 
 import SearchIcon from '../../assets/icons/icon-search.svg';
 import { Dropdown } from '../Dropdown/Dropdown';
 
-import { cnSearchInput } from './SearchInput .classname';
-
 import './SearchInput .css';
+
+const cnSearchInput = cn('SearchInput');
 
 type SearchInputProps = {
   disabled?: boolean;
