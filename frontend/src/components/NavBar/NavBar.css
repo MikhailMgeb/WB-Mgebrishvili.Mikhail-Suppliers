@@ -11,10 +11,6 @@
     border-radius: 10px;
 }
 
-.NavBar-Item:hover {
-    background-color: #ffffff14;
-}
-
 .NavBar-Link {
     padding: 7px;
 
@@ -26,6 +22,10 @@
     text-decoration: none;
 
     border-radius: 10px;
+}
+
+.NavBar-Link:hover {
+    background-color: #4d4c51;
 }
 
 .NavBar-Link.active {

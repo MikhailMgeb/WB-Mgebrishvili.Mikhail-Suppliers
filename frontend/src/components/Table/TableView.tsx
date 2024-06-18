@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/destructuring-assignment */
-/* eslint-disable max-len */
 /* eslint-disable no-return-assign */
+
 import { useState, useRef, useEffect } from 'react';
 import Table from 'rc-table';
+import { cn } from '@bem-react/classname';
 
 import { Tag } from '../Tag/Tag';
 import { Button } from '../Button/Button';
@@ -11,9 +12,9 @@ import IconMenu from '../../assets/icons/icon-kebab.svg';
 import { SupplyData } from '../../types/supply';
 import { MenuDropdown } from '../MenuDropdown/MenuDropdown';
 
-import { cnTableView } from './TableView.classname';
-
 import './TableView.css';
+
+const cnTableView = cn('TableView');
 
 const CustomHeader = (props: any) => (
   <thead className={cnTableView('Thead')}>
@@ -64,7 +65,8 @@ export const TableView = ({ cards, onDelete, onEdit }: TableRowProps) => {
   };
 
   const handleClickOutside = (event: MouseEvent) => {
-    if (openMenuIndex !== null && !menuRefs.current[openMenuIndex]?.contains(event.target as Node)) {
+    if (openMenuIndex !== null
+      && !menuRefs.current[openMenuIndex]?.contains(event.target as Node)) {
       setOpenMenuIndex(null);
     }
   };
@@ -101,7 +103,7 @@ export const TableView = ({ cards, onDelete, onEdit }: TableRowProps) => {
       dataIndex: 'quantity',
       key: 'quantity',
       width: 142,
-      render: (text: string, record: SupplyData) => `${record.quantity} шт.`,
+      render: (_text: string, record: SupplyData) => `${record.quantity} шт.`,
     },
     {
       title: 'Тип поставки',
@@ -114,7 +116,7 @@ export const TableView = ({ cards, onDelete, onEdit }: TableRowProps) => {
       dataIndex: 'warehouse',
       key: 'warehouse',
       width: 374,
-      render: (text: string, record: SupplyData) => (
+      render: (_text: string, record: SupplyData) => (
         <div className={cnTableView('AddressDetails')}>
           <div className={cnTableView('AddressName')}>{record.warehouseName}</div>
           <div className={cnTableView('AddressFull')}>{record.warehouseAddress}</div>
@@ -134,7 +136,7 @@ export const TableView = ({ cards, onDelete, onEdit }: TableRowProps) => {
       dataIndex: 'actions',
       key: 'actions',
       width: 32,
-      render: (text: string, record: SupplyData, rowIndex: number) => (
+      render: (_text: string, record: SupplyData, rowIndex: number) => (
         <div className="action-buttons">
           <Button
             scheme="cloudy"
