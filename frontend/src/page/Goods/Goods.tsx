@@ -1,10 +1,10 @@
-import React from 'react';
+import { cnMain } from '../page.classname';
 
 export const Goods = () => {
   return (
-    <div>
+    <section className={cnMain()}>
       <h2>Страница товаров в разработке</h2>
       <p>Извините, эта страница находится в разработке. Пожалуйста, вернитесь позже.</p>
-    </div>
+    </section>
   );
 };

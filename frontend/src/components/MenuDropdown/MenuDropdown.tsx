@@ -1,6 +1,8 @@
-import { cnMenuDropdown } from './MenuDropdown.classname';
+import { cn } from '@bem-react/classname';
 
 import './MenuDropdown.css';
+
+const cnMenuDropdown = cn('MenuDropdown');
 
 type MenuDropdownProps = {
   options: string[];

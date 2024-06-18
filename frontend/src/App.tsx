@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 
-import Logo from './assets/icons/wb-logo.svg';
+import LogoSVG from './assets/icons/wb-logo.svg';
 
 import { Advertising } from './page/Advertising/Advertising';
 import { Analytics } from './page/Analytics/Analytics';
@@ -18,12 +18,13 @@ import { navItems } from './assets/mock-data';
 import { cnApp } from './App.classname';
 
 import './App.css';
+import { Logo } from './components/Logo/Logo';
 
 export const App = () => {
   return (
     <main className={cnApp()}>
       <div className={cnApp('Header')}>
-        <Logo />
+        <Logo logoComponent={<LogoSVG />} linkTo="/" />
       </div>
       <section className={cnApp('Content')}>
         <NavBar navItems={navItems} />

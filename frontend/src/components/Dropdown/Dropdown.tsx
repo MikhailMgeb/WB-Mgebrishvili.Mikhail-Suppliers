@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { uid } from 'uid';
+import { cn } from '@bem-react/classname';
 
 import ChevronDown from '../../assets/icons/icon-chevron-down.svg';
 
-import { cnDropdown } from './Dropdown.classname';
-
 import './Dropdown.css';
+
+const cnDropdown = cn('Dropdown');
 
 type DropdownProps = {
   options: string[];
