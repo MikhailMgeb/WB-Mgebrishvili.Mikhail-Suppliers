@@ -2,13 +2,13 @@ import { TableView } from './components/Table/TableView';
 import { cards } from './assets/mock-data';
 
 export const App = () => {
-  // const handleDe = (id: string) => {
+  const handleDelete = (id: string) => {
+    console.log(`Удалить: ${id}`);
+  };
 
-  // };
-
-  // const handleEdit = () => {
-
-  // };
+  const handleEdit = (id: string) => {
+    console.log(`Изменить: ${id}`);
+  };
 
   // const columns = useMemo(
   //   () => getMainTableColumns(handleOpenModal),
@@ -17,7 +17,7 @@ export const App = () => {
 
   return (
     <div>
-      <TableView cards={cards} />
+      <TableView cards={cards} onDelete={handleDelete} onEdit={handleEdit} />
     </div>
   );
 };

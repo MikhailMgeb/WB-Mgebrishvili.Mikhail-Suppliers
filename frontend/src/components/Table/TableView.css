@@ -8,13 +8,8 @@ table {
     text-indent: 0;
 }
 
-tbody tr {
-    padding: 8px;
-    border: 1px solid #cccccc; /* Пример границы ячеек */
-}
-
 /* tr {
-    display: row;
+    display: table-row-group;
     vertical-align: baseline;
     unicode-bidi: normal;
     border-color: transparent;
@@ -62,7 +57,11 @@ tbody tr {
 
     background-color: #ffffff14;
     border-radius: 14px;
-    margin-bottom: 10px;
+    overflow: hidden; /* Важно для некоторых браузеров */
+}
+
+.TableView-TbodyRow:hover {
+    background-color: #ffffff3d;
 }
 
 .TableView-AddressDetails {

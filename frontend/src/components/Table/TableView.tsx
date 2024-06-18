@@ -15,10 +15,6 @@ import { cnTableView } from './TableView.classname';
 
 import './TableView.css';
 
-type TableRowProps = {
-  cards: SupplyData[];
-};
-
 const CustomHeader = (props: any) => (
   <thead className={cnTableView('Thead')}>
     {props.children}
@@ -43,9 +39,25 @@ const CustomCell = (props: any) => (
   </td>
 );
 
-export const TableView = ({ cards }: TableRowProps) => {
+type TableRowProps = {
+  cards: SupplyData[];
+  onDelete: (id: string) => void;
+  onEdit: (id: string) => void;
+};
+
+export const TableView = ({ cards, onDelete, onEdit }: TableRowProps) => {
   const [openMenuIndex, setOpenMenuIndex] = useState<number | null>(null);
   const menuRefs = useRef<(HTMLDivElement | null)[]>(Array(cards.length).fill(null));
+
+  const handleDeleteClick = (id: string) => {
+    onDelete(id);
+    setOpenMenuIndex(null);
+  };
+
+  const handleEditClick = (id: string) => {
+    onEdit(id);
+    setOpenMenuIndex(null);
+  };
 
   const handleOpenMenuClick = (index: number) => {
     setOpenMenuIndex(index);
@@ -130,9 +142,19 @@ export const TableView = ({ cards }: TableRowProps) => {
             icon={<IconMenu />}
             onClick={() => handleOpenMenuClick(rowIndex)}
           />
-          <div ref={(el) => menuRefs.current[rowIndex] = el}>
+          <div ref={(el) => (menuRefs.current[rowIndex] = el)}>
             {openMenuIndex === rowIndex && (
-              <MenuDropdown options={['Редактировать', 'Удалить']} isOpenMenu />
+            <MenuDropdown
+              options={['Редактировать', 'Удалить']}
+              onSelect={(option: string) => {
+                if (option === 'Редактировать') {
+                  handleEditClick(record.id);
+                } else if (option === 'Удалить') {
+                  handleDeleteClick(record.id);
+                }
+              }}
+              isOpenMenu
+            />
             )}
           </div>
         </div>
@@ -148,7 +170,7 @@ export const TableView = ({ cards }: TableRowProps) => {
       className={cnTableView()}
       components={{
         header: {
-          wrapper: CustomHeader,
+          table: CustomHeader,
           cell: CustomHeaderCell,
         },
         body: {
