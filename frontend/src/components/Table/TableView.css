@@ -28,7 +28,6 @@ table {
 }
 
 .TableView-TheadCell {
-    text-align: left;
     box-sizing: border-box;
     padding: 8px;
 
@@ -37,6 +36,7 @@ table {
     font-weight: 560;
     line-height: 20px;
     color: #ffffff;
+    text-align: left;
 }
 
 .TableView-TbodyCell {
@@ -52,12 +52,13 @@ table {
 }
 
 .TableView-TbodyRow {
-    height: 75px;
+    overflow: hidden; /* Важно для некоторых браузеров */
+
     box-sizing: border-box;
+    height: 75px;
 
     background-color: #ffffff14;
     border-radius: 14px;
-    overflow: hidden; /* Важно для некоторых браузеров */
 }
 
 .TableView-TbodyRow:hover {
