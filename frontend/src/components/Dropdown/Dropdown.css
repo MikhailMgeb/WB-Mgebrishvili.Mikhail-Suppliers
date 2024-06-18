@@ -1,6 +1,5 @@
 .Dropdown {
     position: relative;
-    width: 400px;
 }
 
 
@@ -14,8 +13,9 @@
     cursor: pointer;
 
     display: flex;
+    gap: 10px;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
 
     padding: 10px;
 
@@ -23,6 +23,11 @@
     border: 1px solid #cccccc;
     border: none;
     border-radius: 10px;
+}
+
+.Dropdown-Select_type_search {
+    width: 133px;
+    padding: 2px;
 }
 
 .Dropdown-Select:hover {

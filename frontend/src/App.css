@@ -1,0 +1,13 @@
+.App {
+    display: flex;
+
+}
+
+.App-Header {
+    padding: 20px;
+}
+
+.App-Content {
+    width: 1274px;
+    padding: 20px;
+}

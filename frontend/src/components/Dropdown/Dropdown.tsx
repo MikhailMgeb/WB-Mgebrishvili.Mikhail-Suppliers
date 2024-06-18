@@ -9,9 +9,10 @@ import './Dropdown.css';
 
 type DropdownProps = {
   options: string[];
+  type?: 'search';
 };
 
-export const Dropdown = ({ options }: DropdownProps) => {
+export const Dropdown = ({ options, type }: DropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(options[0]);
 
@@ -23,7 +24,7 @@ export const Dropdown = ({ options }: DropdownProps) => {
 
   return (
     <div className={cnDropdown()}>
-      <div className={cnDropdown('Select')} onClick={toggleDropdown}>
+      <div className={cnDropdown('Select', { type })} onClick={toggleDropdown}>
         {selectedOption}
         <span className={cnDropdown('Arrow', { open: isOpen })}><ChevronDown /></span>
       </div>

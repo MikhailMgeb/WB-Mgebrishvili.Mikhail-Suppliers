@@ -1,5 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 
+import Logo from './assets/icons/wb-logo.svg';
+
 import { Advertising } from './page/Advertising/Advertising';
 import { Analytics } from './page/Analytics/Analytics';
 import { PricingAndDiscounts } from './page/PricesAndDiscounts/PricesAndDiscounts';
@@ -15,33 +17,25 @@ import { NavBar } from './components/NavBar/NavBar';
 import { navItems } from './assets/mock-data';
 import { cnApp } from './App.classname';
 
+import './App.css';
+
 export const App = () => {
-  // const handleDelete = (id: string) => {
-  //   console.log(`Удалить: ${id}`);
-  // };
-
-  // const handleEdit = (id: string) => {
-  //   console.log(`Изменить: ${id}`);
-  // };
-
-  // const columns = useMemo(
-  //   () => getMainTableColumns(handleOpenModal),
-  //   [handleOpenModal],
-  // );
-
   return (
     <main className={cnApp()}>
-
-      <NavBar navItems={navItems} />
-      <Routes>
-        <Route path="/" element={<Supplies />} />
-        <Route path="/goods" element={<Goods />} />
-        <Route path="/pricing-and-discounts" element={<PricingAndDiscounts />} />
-        <Route path="/analytics" element={<Analytics />} />
-        <Route path="/advertising" element={<Advertising />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-
+      <div className={cnApp('Header')}>
+        <Logo />
+      </div>
+      <section className={cnApp('Content')}>
+        <NavBar navItems={navItems} />
+        <Routes>
+          <Route path="/" element={<Supplies />} />
+          <Route path="/goods" element={<Goods />} />
+          <Route path="/pricing-and-discounts" element={<PricingAndDiscounts />} />
+          <Route path="/analytics" element={<Analytics />} />
+          <Route path="/advertising" element={<Advertising />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </section>
       {/* <div>
         <TableView cards={cards} onDelete={handleDelete} onEdit={handleEdit} />
       </div> */}
