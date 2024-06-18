@@ -1,16 +1,14 @@
-import Table from 'rc-table';
-
+import { TableView } from './components/Table/TableView';
 import { cards } from './assets/mock-data';
-import { columns } from './components/Table/TableData';
 
 export const App = () => {
   // const handleDe = (id: string) => {
 
-  // }
+  // };
 
   // const handleEdit = () => {
 
-  // }
+  // };
 
   // const columns = useMemo(
   //   () => getMainTableColumns(handleOpenModal),
@@ -19,7 +17,7 @@ export const App = () => {
 
   return (
     <div>
-      <Table columns={columns} data={cards} />
+      <TableView cards={cards} />
     </div>
   );
 };

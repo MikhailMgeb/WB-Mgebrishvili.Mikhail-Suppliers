@@ -1,0 +1,78 @@
+.TableView {
+    max-width: 1226px;
+}
+
+table {
+    border-spacing: 0 10px;
+    border-collapse: separate;
+    text-indent: 0;
+}
+
+tbody tr {
+    padding: 8px;
+    border: 1px solid #cccccc; /* Пример границы ячеек */
+}
+
+/* tr {
+    display: row;
+    vertical-align: baseline;
+    unicode-bidi: normal;
+    border-color: transparent;
+    margin: 8px;
+} */
+
+.TableHead-Cell {
+    box-sizing: border-box;
+    padding: 0 4px;
+
+    font-family: 'ALSHauss', Helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: 560;
+    line-height: 20px;
+    color: #ffffff;
+}
+
+.TableView-TheadCell {
+    text-align: left;
+    box-sizing: border-box;
+    padding: 8px;
+
+    font-family: 'ALSHauss', Helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: 560;
+    line-height: 20px;
+    color: #ffffff;
+}
+
+.TableView-TbodyCell {
+    box-sizing: border-box;
+    padding: 8px;
+
+    font-family: 'ALSHauss', Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 560;
+    line-height: 20px;
+    color: #ffffff;
+    text-overflow: ellipsis;
+}
+
+.TableView-TbodyRow {
+    height: 75px;
+    box-sizing: border-box;
+
+    background-color: #ffffff14;
+    border-radius: 14px;
+    margin-bottom: 10px;
+}
+
+.TableView-AddressDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.TableView-AddressFull {
+    font-size: 13px;
+    line-height: 16px;
+    opacity: 0.4;
+}
