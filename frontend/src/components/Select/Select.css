@@ -1,0 +1,82 @@
+.Select {
+    position: relative;
+}
+
+.Select-Option {
+    cursor: pointer;
+
+    padding: 14px 40px;
+
+    font-family: 'ALSHauss', Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 560;
+    color: #000000;
+
+    background-color: #ffffff;
+}
+
+.Select-Select {
+    cursor: pointer;
+
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+
+
+    padding: 8;
+
+    font-family: 'ALSHauss', Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 440;
+    line-height: 20px;
+    color: #ffffff;
+
+    background-color: #ffffff14;
+    border: 1px solid #cccccc;
+    border: none;
+    border-radius: 10px;
+}
+
+.Select-Select_type_search {
+    overflow: hidden;
+    padding: 0 6px;
+    color: #ffffff;
+    white-space: nowrap;
+}
+
+.Select-Select:hover {
+    background-color: #ffffff3d;
+}
+
+.Select-Arrow {
+    background-position: right 10px center;
+    transition: transform 0.2s;
+}
+
+.Select-Arrow.Select-Arrow_open {
+    transform: rotate(180deg);
+}
+
+.Select-List {
+    position: absolute;
+    z-index: 10;
+    top: 100%;
+    right: 0;
+    left: 0;
+
+    overflow-y: auto;
+
+    max-height: inherit;
+
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-top: none;
+    border-radius: 8px;
+}
+
+.Select-Option:hover {
+    cursor: pointer;
+    background-color: #f1f1f1;
+
+}
