@@ -30,3 +30,26 @@
     gap: 20px;
     align-items: center;
 }
+
+.Supplies-Content {
+    font-family: 'ALSHauss', Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 560;
+    line-height: 20px;
+
+}
+
+.Supplies-ContentLoading {
+    margin-top: 50px;
+    color: #cef9d9;
+}
+
+.ContentInfo {
+    margin-top: 50px;
+    color: #ffffff;
+}
+
+.Supplies-ContentError {
+    margin-top: 50px;
+    color: #ed5d5d;
+}
