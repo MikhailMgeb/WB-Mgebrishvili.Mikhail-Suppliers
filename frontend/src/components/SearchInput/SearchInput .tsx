@@ -3,9 +3,8 @@ import { cn } from '@bem-react/classname';
 
 import SearchIcon from '../../assets/icons/icon-search.svg';
 
-import { FormTextInput } from '../FormTextInput/FormTextInput';
-
 import './SearchInput .css';
+import { FormSelect } from '../FormSelect/FormSelect';
 
 const cnSearchInput = cn('SearchInput');
 
@@ -21,6 +20,7 @@ export const SearchInput = ({
   placeholder = 'Поиск...',
   value = '',
   onChange,
+
 }: SearchInputProps) => {
   const handleChangeValue = (event: ChangeEvent<HTMLInputElement>) => {
     if (onChange) {
@@ -30,7 +30,7 @@ export const SearchInput = ({
 
   return (
     <div className={cnSearchInput()}>
-      <FormTextInput label="" options={['По номеру', 'По городу', 'По типу поставки', 'По статусу']} type="select" />
+      <FormSelect label="" options={['По номеру', 'По городу', 'По типу поставки', 'По типу поставки']} htmlId="Search" type="search" />
       <input
         className={cnSearchInput('Input')}
         value={value}

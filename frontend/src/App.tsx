@@ -16,9 +16,9 @@ import { Goods } from './page/Goods/Goods';
 
 import { NavBar } from './components/NavBar/NavBar';
 import { navItems } from './assets/mock-data';
+import { Logo } from './components/Logo/Logo';
 
 import './App.css';
-import { Logo } from './components/Logo/Logo';
 
 const cnApp = cn('App');
 
@@ -39,9 +39,6 @@ export const App = () => {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </section>
-      {/* <div>
-        <TableView cards={cards} onDelete={handleDelete} onEdit={handleEdit} />
-      </div> */}
     </main>
   );
 };

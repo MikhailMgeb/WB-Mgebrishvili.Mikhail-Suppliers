@@ -14,6 +14,7 @@ import {
 import { getAddressForWarehouse } from '../../assets/utils';
 
 import './CustomModal.css';
+import { FormSelect } from '../FormSelect/FormSelect';
 
 const cnCustomModal = cn('CustomModal');
 
@@ -99,15 +100,16 @@ export const CustomModal: React.FC<CustomModalProps> = ({
             type="date"
             value={deliveryDate}
             onChange={(value) => setDeliveryDate(value as string)}
+            htmlId=""
           />
         )}
 
-        <FormTextInput
+        <FormSelect
           label="Город"
-          type="select"
-          options={dropdownDataCityOption}
           value={city}
           onChange={(value) => setCity(value as string)}
+          options={dropdownDataCityOption}
+          htmlId="city"
         />
 
         <FormTextInput
@@ -115,30 +117,31 @@ export const CustomModal: React.FC<CustomModalProps> = ({
           type="number"
           value={quantity}
           onChange={(value) => setQuantity(value as number)}
+          htmlId="quantity"
         />
 
-        <FormTextInput
+        <FormSelect
           label="Тип поставки"
-          type="select"
-          options={deliveryTypeOption}
           value={deliveryType}
           onChange={(value) => setDeliveryType(value as string)}
+          options={deliveryTypeOption}
+          htmlId=""
         />
 
-        <FormTextInput
+        <FormSelect
           label="Склад"
-          type="select"
-          options={listWarehousesOption}
           value={warehouse}
           onChange={(value) => setWarehouse(value as string)}
+          options={listWarehousesOption}
+          htmlId=""
         />
 
-        <FormTextInput
+        <FormSelect
           label="Статус"
-          type="select"
-          options={deliveryStatusesOption}
           value={status}
           onChange={(value) => setStatus(value as string)}
+          options={deliveryStatusesOption}
+          htmlId=""
         />
 
         <div className={cnCustomModal('GroupButton')}>

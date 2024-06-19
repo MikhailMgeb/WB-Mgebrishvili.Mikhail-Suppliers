@@ -9,7 +9,7 @@ const warehouseAddresses: Record<string, string> = {
 };
 
 export const getAddressForWarehouse = (warehouseName: string): string => {
-  const address = warehouseAddresses[warehouseName] || 'Адрес не найден'; // По умолчанию, если адрес не найден
+  const address = warehouseAddresses[warehouseName] || 'Адрес не найден';
 
   return address;
 };
