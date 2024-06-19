@@ -39,7 +39,7 @@
 .CustomModal-From {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 4px;
 }
 
 .CustomModal-Label {
@@ -53,6 +53,8 @@
 .CustomModal-GroupButton {
     display: flex;
     gap: 12px;
+
     max-width: 184px;
     height: 36px;
+    margin-top: 12px;
 }

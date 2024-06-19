@@ -1,4 +1,4 @@
-export const dropdownDataCity = [
+export const dropdownDataCityOption = [
   'Москва',
   'Псков',
   'Тверь',
@@ -8,6 +8,6 @@ export const dropdownDataCity = [
   'Ярославль',
 ];
 
-export const deliveryType = ['Короб', 'Монопаллета'];
-export const listWarehouses = ['Склад', 'СЦ Абакан', 'Черная грязь', 'Внуково', 'Белая дача', 'Электросталь', 'Вёшки'];
-export const deliveryStatuses = ['В пути', 'Задерживается'];
+export const deliveryTypeOption = ['Короб', 'Монопаллета'];
+export const listWarehousesOption = ['Склад', 'СЦ Абакан', 'Черная грязь', 'Внуково', 'Белая дача', 'Электросталь', 'Вёшки'];
+export const deliveryStatusesOption = ['В пути', 'Задерживается'];

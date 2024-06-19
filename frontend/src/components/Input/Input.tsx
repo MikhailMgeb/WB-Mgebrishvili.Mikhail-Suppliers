@@ -12,7 +12,7 @@ type InputProps = {
   placeholder?: string;
   type?: 'text' | 'date' | 'number';
   value?: string | number;
-  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (event: string | number) => void;
 };
 
 export const Input = ({
@@ -26,7 +26,11 @@ export const Input = ({
 }: InputProps) => {
   const handleChangeValue = (event: ChangeEvent<HTMLInputElement>) => {
     if (onChange) {
-      onChange(event);
+      let newValue: string | number = event.target.value;
+      if (type === 'number') {
+        newValue = Number(newValue);
+      }
+      onChange(newValue);
     }
   };
 

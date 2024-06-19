@@ -1,20 +1,20 @@
+/* eslint-disable max-len */
 /* eslint-disable react/jsx-no-bind */
 import { cn } from '@bem-react/classname';
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import Modal from 'react-modal';
 
-import { Button } from '../Button/Button';
-// import { Input } from '../Input/Input';
-
 import IconClose from '../../assets/icons/icon-close.svg';
-
-import './CustomModal.css';
-
+import { Button } from '../Button/Button';
 import { Dropdown } from '../Dropdown/Dropdown';
 import { Input } from '../Input/Input';
 import {
-  deliveryStatuses, deliveryType, dropdownDataCity, listWarehouses,
+  deliveryStatusesOption, deliveryTypeOption, dropdownDataCityOption,
+  listWarehousesOption,
 } from '../MenuDropdown/DropData';
+import { getAddressForWarehouse } from '../../assets/utils';
+
+import './CustomModal.css';
 
 const cnCustomModal = cn('CustomModal');
 
@@ -47,13 +47,36 @@ type CustomModalProps = {
 export const CustomModal: React.FC<CustomModalProps> = ({
   isOpen, onRequestClose, type, id,
 }) => {
+  const [deliveryDate, setDeliveryDate] = useState<string>('');
+  const [city, setCity] = useState('');
+  const [quantity, setQuantity] = useState<number>();
+  const [deliveryType, setDeliveryType] = useState('');
+  const [warehouse, setWarehouse] = useState('');
+  const [status, setStatus] = useState('');
   const subtitle = useRef<HTMLHeadingElement>(null);
 
   function afterOpenModal() {
     if (subtitle.current) {
-      subtitle.current.style.color = '#f00';
+      subtitle.current.style.color = 'rgba(0, 0, 0, 0.7)';
     }
   }
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const warehouseAddress = getAddressForWarehouse(warehouse);
+
+    const formData = {
+      id,
+      deliveryDate,
+      city,
+      quantity,
+      deliveryType,
+      warehouse,
+      warehouseAddress,
+      status,
+    };
+    console.log('Form Data:', formData);
+  };
 
   return (
     <Modal
@@ -70,22 +93,28 @@ export const CustomModal: React.FC<CustomModalProps> = ({
       <div className={cnCustomModal('CloseButton')}>
         <Button scheme="cloudy" onClick={onRequestClose} icon={<IconClose />} />
       </div>
-      <form className={cnCustomModal('From')}>
+      <form className={cnCustomModal('From')} onSubmit={handleSubmit}>
         {type !== 'create' || (<label className={cnCustomModal('Label')}>Дата поставки</label>)}
-        {type !== 'create' || <Input type="date" />}
+        {type !== 'create' || <Input type="date" onChange={(value) => setDeliveryDate(value as string)} value={deliveryDate} />}
+
         <label className={cnCustomModal('Label')}>Город</label>
-        <Dropdown options={dropdownDataCity} />
+        <Dropdown options={dropdownDataCityOption} onChange={(value) => setCity(value)} />
+
         <label className={cnCustomModal('Label')}>Кол-во</label>
-        <Input type="number" />
+        <Input type="number" onChange={(value) => setQuantity(value as number)} value={quantity} />
+
         <label className={cnCustomModal('Label')}>Тип поставки</label>
-        <Dropdown options={deliveryType} />
+        <Dropdown options={deliveryTypeOption} onChange={(value) => setDeliveryType(value)} />
+
         <label className={cnCustomModal('Label')}>Склад</label>
-        <Dropdown options={listWarehouses} />
+        <Dropdown options={listWarehousesOption} onChange={(value) => setWarehouse(value)} />
+
         <label className={cnCustomModal('Label')}>Статус</label>
-        <Dropdown options={deliveryStatuses} />
+        <Dropdown options={deliveryStatusesOption} onChange={(value) => setStatus(value)} />
+
         <div className={cnCustomModal('GroupButton')}>
-          <Button scheme="primary" text="Создать" />
-          <Button scheme="cloudy" text="Отменить" />
+          <Button scheme="primary" text={type === 'create' ? 'Создать' : 'Сохранить'} />
+          <Button scheme="cloudy" text="Отменить" onClick={onRequestClose} />
         </div>
       </form>
     </Modal>

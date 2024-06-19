@@ -29,6 +29,11 @@
     display: flex;
     gap: 20px;
     align-items: center;
+    height: 100%;
+}
+
+.Supplies-AddSupply {
+    height: 100%;
 }
 
 .Supplies-Content {
