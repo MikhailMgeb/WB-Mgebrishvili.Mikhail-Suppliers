@@ -1,6 +1,6 @@
-import { SupplyData } from '../../types/supply';
+import { SupplyData } from '../../models/models';
 
-export const cards: SupplyData[] = [
+export const mockData: SupplyData[] = [
   {
     id: '1548141',
     date: '2024-06-12',

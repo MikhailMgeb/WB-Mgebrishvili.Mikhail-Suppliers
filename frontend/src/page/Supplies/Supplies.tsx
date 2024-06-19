@@ -2,16 +2,21 @@ import { cn } from '@bem-react/classname';
 
 import { Button } from '../../components/Button/Button';
 
+import { useGetSuppliesQuery } from '../../store/supplies/supplies.api';
 import AddIcon from '../../assets/icons/icon-plus.svg';
 import { SearchInput } from '../../components/SearchInput/SearchInput ';
 import { TableView } from '../../components/Table/TableView';
-import { cards } from '../../assets/mock-data';
+import { mockData } from '../../assets/mock-data';
 
 import './Supplies.css';
+
 
 const cnSupplies = cn('Supplies');
 
 export const Supplies = () => {
+  const { isLoading, isError, data } = useGetSuppliesQuery();
+  console.log(isLoading, isError, data);
+
   const handleDelete = (id: string) => {
     console.log(`Удалить: ${id}`);
   };
@@ -27,6 +32,8 @@ export const Supplies = () => {
   //   () => getMainTableColumns(handleOpenModal),
   //   [handleOpenModal],
   // );
+
+  const suppliesData = isError || !data ? mockData : data;
 
   return (
     <main className={cnSupplies()}>
@@ -45,11 +52,18 @@ export const Supplies = () => {
           </div>
         </div>
       </header>
-      <TableView
-        cards={cards}
-        onDelete={handleDelete}
-        onEdit={handleEdit}
-      />
+      <section className={cnSupplies('Content')}>
+        {isLoading ? <p className={cnSupplies('ContentLoading')}>Загрузка данных...</p> : null}
+        {!isError ? <p className={cnSupplies('ContentError')}>Произошла ошибка при загрузке данных.</p> : null}
+        {suppliesData && suppliesData.length === 0 && <p className={cnSupplies('ContentInfo')}>Нет доступных поставок.</p>}
+        {suppliesData && suppliesData.length > 0 && (
+          <TableView
+            cards={suppliesData}
+            onDelete={handleDelete}
+            onEdit={handleEdit}
+          />
+        )}
+      </section>
     </main>
   );
 };
