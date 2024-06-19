@@ -24,10 +24,10 @@ export const Button = ({
 
   return (
     <button
-      className={cnButton({ theme: scheme === 'cloudy' ? modification : scheme, size })}
+      className={cnButton({ theme: scheme === 'cloudy' ? modification : scheme, size, centered: !text })}
       onClick={handleClick}
     >
-      {icon && <span className={cnButton('Icon')}>{icon}</span>}
+      {icon && <span className={cnButton('Icon', { centered: !!text })}>{icon}</span>}
       {text && <p className={cnButton('Text')}>{text}</p>}
     </button>
   );

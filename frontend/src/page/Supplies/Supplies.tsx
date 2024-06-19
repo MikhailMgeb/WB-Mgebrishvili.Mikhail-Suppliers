@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { cn } from '@bem-react/classname';
 
 import { Button } from '../../components/Button/Button';
@@ -7,15 +8,16 @@ import AddIcon from '../../assets/icons/icon-plus.svg';
 import { SearchInput } from '../../components/SearchInput/SearchInput ';
 import { TableView } from '../../components/Table/TableView';
 import { mockData } from '../../assets/mock-data';
+import { CustomModal } from '../../components/CustomModal/CustomModal';
 
 import './Supplies.css';
-
 
 const cnSupplies = cn('Supplies');
 
 export const Supplies = () => {
   const { isLoading, isError, data } = useGetSuppliesQuery();
-  console.log(isLoading, isError, data);
+  const [usedId, setUsedId] = useState('');
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const handleDelete = (id: string) => {
     console.log(`Удалить: ${id}`);
@@ -23,6 +25,8 @@ export const Supplies = () => {
 
   const handleEdit = (id: string) => {
     console.log(`Изменить: ${id}`);
+    setModalIsOpen(true);
+    setUsedId(id);
   };
 
   const handleClick = () => {
@@ -34,6 +38,10 @@ export const Supplies = () => {
   // );
 
   const suppliesData = isError || !data ? mockData : data;
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
 
   return (
     <main className={cnSupplies()}>
@@ -64,6 +72,12 @@ export const Supplies = () => {
           />
         )}
       </section>
+      <CustomModal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        type="create"
+        id={usedId}
+      />
     </main>
   );
 };
