@@ -6,8 +6,7 @@ import Modal from 'react-modal';
 
 import IconClose from '../../assets/icons/icon-close.svg';
 import { Button } from '../Button/Button';
-import { Dropdown } from '../Dropdown/Dropdown';
-import { Input } from '../Input/Input';
+import { FormTextInput } from '../FormTextInput/FormTextInput';
 import {
   deliveryStatusesOption, deliveryTypeOption, dropdownDataCityOption,
   listWarehousesOption,
@@ -94,23 +93,53 @@ export const CustomModal: React.FC<CustomModalProps> = ({
         <Button scheme="cloudy" onClick={onRequestClose} icon={<IconClose />} />
       </div>
       <form className={cnCustomModal('From')} onSubmit={handleSubmit}>
-        {type !== 'create' || (<label className={cnCustomModal('Label')}>Дата поставки</label>)}
-        {type !== 'create' || <Input type="date" onChange={(value) => setDeliveryDate(value as string)} value={deliveryDate} />}
+        {type !== 'create' && (
+          <FormTextInput
+            label="Дата поставки"
+            type="date"
+            value={deliveryDate}
+            onChange={(value) => setDeliveryDate(value as string)}
+          />
+        )}
 
-        <label className={cnCustomModal('Label')}>Город</label>
-        <Dropdown options={dropdownDataCityOption} onChange={(value) => setCity(value)} />
+        <FormTextInput
+          label="Город"
+          type="select"
+          options={dropdownDataCityOption}
+          value={city}
+          onChange={(value) => setCity(value as string)}
+        />
 
-        <label className={cnCustomModal('Label')}>Кол-во</label>
-        <Input type="number" onChange={(value) => setQuantity(value as number)} value={quantity} />
+        <FormTextInput
+          label="Кол-во"
+          type="number"
+          value={quantity}
+          onChange={(value) => setQuantity(value as number)}
+        />
 
-        <label className={cnCustomModal('Label')}>Тип поставки</label>
-        <Dropdown options={deliveryTypeOption} onChange={(value) => setDeliveryType(value)} />
+        <FormTextInput
+          label="Тип поставки"
+          type="select"
+          options={deliveryTypeOption}
+          value={deliveryType}
+          onChange={(value) => setDeliveryType(value as string)}
+        />
 
-        <label className={cnCustomModal('Label')}>Склад</label>
-        <Dropdown options={listWarehousesOption} onChange={(value) => setWarehouse(value)} />
+        <FormTextInput
+          label="Склад"
+          type="select"
+          options={listWarehousesOption}
+          value={warehouse}
+          onChange={(value) => setWarehouse(value as string)}
+        />
 
-        <label className={cnCustomModal('Label')}>Статус</label>
-        <Dropdown options={deliveryStatusesOption} onChange={(value) => setStatus(value)} />
+        <FormTextInput
+          label="Статус"
+          type="select"
+          options={deliveryStatusesOption}
+          value={status}
+          onChange={(value) => setStatus(value as string)}
+        />
 
         <div className={cnCustomModal('GroupButton')}>
           <Button scheme="primary" text={type === 'create' ? 'Создать' : 'Сохранить'} />
