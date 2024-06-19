@@ -1,0 +1,115 @@
+.TextInput {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+    width: 100%;
+
+    background-color: #ffffff14;
+    border-radius: 10px;
+}
+
+.TextInput-TextInput {
+    flex: 1;
+
+    margin: 0 10px;
+    padding: 12px;
+
+    font-family: 'ALSHauss', Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 440;
+    line-height: 20px;
+    color: #ffffff;
+
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+
+.TextInput:focus-within {
+    background-color: #ffffff3d;
+
+}
+
+.TextInput-TextInput:focus {
+    border: none;
+}
+
+.TextInput-RightIcon {
+    margin-right: 15px;
+    color: #ffffff5c;
+}
+
+.TextInput:focus-within .TextInput-RightIcon {
+    color: #ffffff;
+}
+
+.TextInput-Option {
+    cursor: pointer;
+
+    padding: 12px 16px;
+
+    font-family: 'ALSHauss', Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 560;
+
+    background-color: #ffffff;
+}
+
+.TextInput-Select {
+    cursor: pointer;
+
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    padding: 8px 20px;
+
+    font-family: 'ALSHauss', Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 440;
+    line-height: 20px;
+    color: #ffffff;
+
+    background-color: #ffffff14;
+    border: 1px solid #cccccc;
+    border: none;
+    border-radius: 10px;
+}
+
+.TextInput-List {
+    position: absolute;
+    z-index: 10;
+    top: 100%;
+    right: 0;
+    left: 0;
+
+    overflow-y: auto;
+
+    max-height: inherit;
+
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-top: none;
+    border-radius: 8px;
+}
+
+.TextInput-Arrow {
+    background-position: right 10px center;
+    transition: transform 0.2s;
+}
+
+.TextInput-Arrow.TextInput-Arrow_open {
+    transform: rotate(180deg);
+}
+
+.TextInput-Option:hover {
+    cursor: pointer;
+    background-color: #f1f1f1;
+}

@@ -2,7 +2,8 @@ import type { ChangeEvent } from 'react';
 import { cn } from '@bem-react/classname';
 
 import SearchIcon from '../../assets/icons/icon-search.svg';
-import { Dropdown } from '../Dropdown/Dropdown';
+
+import { FormTextInput } from '../FormTextInput/FormTextInput';
 
 import './SearchInput .css';
 
@@ -29,7 +30,7 @@ export const SearchInput = ({
 
   return (
     <div className={cnSearchInput()}>
-      <Dropdown options={['По номеру', 'По городу', 'По типу поставки', 'По статусу']} type="search" />
+      <FormTextInput label="" options={['По номеру', 'По городу', 'По типу поставки', 'По статусу']} type="select" />
       <input
         className={cnSearchInput('Input')}
         value={value}
