@@ -3,7 +3,8 @@
     align-items: center;
     justify-content: space-between;
 
-    height: 36px;
+    width: 100%;
+    height: 100%;
 
     border: none;
     border-radius: 10px;
@@ -21,6 +22,10 @@
 
 .Button_size_large {
     width: 193px;
+}
+
+.Button_centered {
+    justify-content: center;
 }
 
 .Button_theme_alpha {

@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { uid } from 'uid';
 import { cn } from '@bem-react/classname';
 
 import ChevronDown from '../../assets/icons/icon-chevron-down.svg';
@@ -33,7 +32,7 @@ export const Dropdown = ({ options, type }: DropdownProps) => {
         <div className={cnDropdown('List')}>
           {options.map((option) => (
             <div
-              key={uid()}
+              key={option}
               className={cnDropdown('Option')}
               onClick={() => handleOptionClick(option)}
             >

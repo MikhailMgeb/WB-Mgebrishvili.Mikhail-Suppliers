@@ -1,4 +1,4 @@
-import { SupplyData } from '../../types/supply';
+import { SupplyData } from '../../models/models';
 
 export const cards: SupplyData[] = [
   {

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable no-return-assign */
@@ -9,10 +10,10 @@ import { cn } from '@bem-react/classname';
 import { Tag } from '../Tag/Tag';
 import { Button } from '../Button/Button';
 import IconMenu from '../../assets/icons/icon-kebab.svg';
-import { SupplyData } from '../../types/supply';
 import { MenuDropdown } from '../MenuDropdown/MenuDropdown';
 
 import './TableView.css';
+import { SupplyData } from '../../models/models';
 
 const cnTableView = cn('TableView');
 

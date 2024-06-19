@@ -1,0 +1,58 @@
+.CustomModal-Description {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 24px;
+}
+
+.CustomModal-Title {
+    margin: 0;
+
+    font-family: 'ALSHauss', Helvetica, sans-serif;
+    font-size: 24px;
+    font-weight: 680;
+    line-height: 32px;
+    color: #ffffff !important;
+}
+
+.CustomModal-TitleId {
+    margin: 0;
+
+    font-family: 'ALSHauss', Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 440;
+    line-height: 20px;
+    color: #767386;
+}
+
+.CustomModal-CloseButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    width: 44px;
+    height: 44px;
+
+    text-align: center;
+}
+
+.CustomModal-From {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.CustomModal-Label {
+    font-family: 'ALSHauss', Helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: 560;
+    line-height: 16px;
+    color: #767386;
+}
+
+.CustomModal-GroupButton {
+    display: flex;
+    gap: 12px;
+    max-width: 184px;
+    height: 36px;
+}
