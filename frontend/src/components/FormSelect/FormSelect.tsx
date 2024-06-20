@@ -6,6 +6,7 @@ type FormSelectProps = {
   onChange?: (value: string | number) => void;
   options: string[];
   htmlId: string;
+  value: string;
 };
 
 export const FormSelect = ({
@@ -13,6 +14,7 @@ export const FormSelect = ({
   onChange,
   options,
   htmlId,
+  value,
 }: FormSelectProps) => {
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement> | string | number) => {
     if (typeof event === 'string' || typeof event === 'number') {
@@ -33,6 +35,7 @@ export const FormSelect = ({
         onChange={handleInputChange}
         options={options}
         htmlId={htmlId}
+        value={value}
       />
     </FieldWrapper>
   );

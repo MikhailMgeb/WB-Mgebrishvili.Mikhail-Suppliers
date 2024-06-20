@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 /* eslint-disable react/jsx-no-bind */
 import { cn } from '@bem-react/classname';
 import React, { useRef, useState, useEffect } from 'react';
@@ -14,10 +13,10 @@ import {
 } from '../MenuDropdown/DropData';
 import { getAddressForWarehouse } from '../../assets/utils';
 import { SupplyData } from '../../models/models';
+import { useAddSupplyMutation, useUpdateSupplyMutation } from '../../store/supplies/supplies.api';
 import { FieldCalendar } from '../FieldCalendar/FieldCalendar';
 
 import './CustomModal.css';
-import { useAddSupplyMutation, useUpdateSupplyMutation } from '../../store/supplies/supplies.api';
 
 const cnCustomModal = cn('CustomModal');
 
@@ -51,11 +50,11 @@ export const CustomModal: React.FC<CustomModalProps> = ({
   isOpen, onRequestClose, type, supplyData,
 }) => {
   const [deliveryDate, setDeliveryDate] = useState<string>('');
-  const [city, setCity] = useState('');
+  const [city, setCity] = useState<string>('');
   const [quantity, setQuantity] = useState<number>(0);
-  const [deliveryType, setDeliveryType] = useState('');
-  const [warehouse, setWarehouse] = useState('');
-  const [status, setStatus] = useState('');
+  const [deliveryType, setDeliveryType] = useState<string>('');
+  const [warehouse, setWarehouse] = useState<string>('');
+  const [status, setStatus] = useState<string>('');
   const subtitle = useRef<HTMLHeadingElement>(null);
 
   const [addSupply] = useAddSupplyMutation();
@@ -63,14 +62,16 @@ export const CustomModal: React.FC<CustomModalProps> = ({
 
   useEffect(() => {
     if (supplyData) {
-      setDeliveryDate(supplyData.date);
-      setCity(supplyData.city);
-      setQuantity(supplyData.quantity);
-      setDeliveryType(supplyData.supplyType);
-      setWarehouse(supplyData.warehouseName);
-      setStatus(supplyData.status);
+      setDeliveryDate(supplyData.date || '');
+      setCity(supplyData.city || '');
+      setQuantity(supplyData.quantity || 0);
+      setDeliveryType(supplyData.supplyType || '');
+      setWarehouse(supplyData.warehouseName || '');
+      setStatus(supplyData.status || '');
     }
   }, [supplyData]);
+
+  console.log(supplyData);
 
   function afterOpenModal() {
     if (subtitle.current) {
@@ -132,6 +133,7 @@ export const CustomModal: React.FC<CustomModalProps> = ({
 
         <FormSelect
           label="Город"
+          value={city}
           onChange={(value) => setCity(value as string)}
           options={dropdownDataCityOption}
           htmlId="city"
@@ -141,12 +143,13 @@ export const CustomModal: React.FC<CustomModalProps> = ({
           label="Кол-во"
           type="number"
           value={quantity}
-          onChange={(value) => setQuantity(value as number)}
+          onChange={(value) => setQuantity(parseInt(value as string, 10))}
           htmlId="quantity"
         />
 
         <FormSelect
           label="Тип поставки"
+          value={deliveryType}
           onChange={(value) => setDeliveryType(value as string)}
           options={deliveryTypeOption}
           htmlId=""
@@ -154,6 +157,7 @@ export const CustomModal: React.FC<CustomModalProps> = ({
 
         <FormSelect
           label="Склад"
+          value={warehouse}
           onChange={(value) => setWarehouse(value as string)}
           options={listWarehousesOption}
           htmlId=""
@@ -161,6 +165,7 @@ export const CustomModal: React.FC<CustomModalProps> = ({
 
         <FormSelect
           label="Статус"
+          value={status}
           onChange={(value) => setStatus(value as string)}
           options={deliveryStatusesOption}
           htmlId=""
