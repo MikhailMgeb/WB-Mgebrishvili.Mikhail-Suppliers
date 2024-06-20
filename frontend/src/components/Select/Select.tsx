@@ -12,15 +12,16 @@ type SelectProps = {
   options: string[];
   onChange: (value: string) => void;
   htmlId: string;
+  value: string;
 };
 
 export const Select = ({
-  options, onChange, htmlId,
+  options, onChange, htmlId, value,
 }: SelectProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState('');
+  const [selectedOption, setSelectedOption] = useState(value);
 
-  const toggleDropdown = () => setIsOpen((!isOpen));
+  const toggleDropdown = () => setIsOpen(!isOpen);
 
   const handleOptionClick = (option: string) => {
     onChange(option);
