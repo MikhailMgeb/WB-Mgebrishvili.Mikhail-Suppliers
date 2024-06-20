@@ -7,14 +7,16 @@ import { errorMiddleware } from './middlewares/middlewares';
 const port = process.env.PORT || 5000;
 const app = express();
 
+const corsOptions = {
+  origin: 'http://localhost:5173',
+  optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
+
 app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
-
-app.use(cors({
-  credentials: true,
-  origin: process.env.CLIENT_URL,
-}));
 
 app.use('/api', suppliersRouter);
 

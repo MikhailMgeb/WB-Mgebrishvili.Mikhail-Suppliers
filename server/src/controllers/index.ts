@@ -1,4 +1,7 @@
+/* eslint-disable import/no-extraneous-dependencies */
+
 import type { Request, Response } from 'express';
+import { v4 as uuidv4 } from 'uuid';
 
 import { Supply, loadSuppliesFromFile, saveSuppliesToFile } from '../utils/fileUtils';
 
@@ -14,12 +17,15 @@ export const getAllSupplies = (_req: Request, res: Response) => {
 export const createSupply = async (req: Request, res: Response) => {
   try {
     const createdSupply = req.body;
-
     const dataSupplies = loadSuppliesFromFile();
-    const isCheckSupply = dataSupplies.some((supply) => supply.id === createdSupply.id);
 
-    if (isCheckSupply) {
-      return res.status(400).json({ error: 'Supply with this ID already exists' });
+    if (!createdSupply.id) {
+      createdSupply.id = uuidv4();
+    } else {
+      const isCheckSupply = dataSupplies.some((supply) => supply.id === createdSupply.id);
+      if (isCheckSupply) {
+        return res.status(400).json({ error: 'Supply with this ID already exists' });
+      }
     }
 
     dataSupplies.push(createdSupply);
