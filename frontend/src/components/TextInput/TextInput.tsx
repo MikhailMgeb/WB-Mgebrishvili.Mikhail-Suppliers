@@ -10,7 +10,7 @@ type TextInputProps = {
   disabled?: boolean;
   rightIcon?: React.ReactNode;
   placeholder?: string;
-  type?: 'text' | 'date' | 'number';
+  type?: 'text' | 'search' | 'number';
   value?: string | number;
   onChange?: (event: string | number) => void;
   onClick?: () => void;
@@ -22,7 +22,7 @@ export const TextInput = ({
   disabled = false,
   rightIcon,
   placeholder = '',
-  type = 'text',
+  type,
   value = '',
   onChange,
   onClick,
@@ -49,7 +49,7 @@ export const TextInput = ({
         onChange={handleChangeValue}
         id={htmlId}
       />
-      {type !== 'date' && <span className={cnTextInput('RightIcon')}>{rightIcon || 'шт'}</span>}
+      {type === 'number' && <span className={cnTextInput('RightIcon')}>{rightIcon || 'шт'}</span>}
     </div>
   );
 };

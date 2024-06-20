@@ -65,3 +65,7 @@ export const navItems = [
   { id: '4', to: '/analytics', label: 'Аналитика' },
   { id: '5', to: '/advertising', label: 'Реклама' },
 ];
+
+export const searchSelectItems = [
+  'По номеру', 'По городу', 'По типу поставки', 'По статусу',
+];

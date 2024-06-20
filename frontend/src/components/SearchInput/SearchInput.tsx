@@ -1,18 +1,19 @@
-import type { ChangeEvent } from 'react';
 import { cn } from '@bem-react/classname';
 
 import SearchIcon from '../../assets/icons/icon-search.svg';
+import { TextInput } from '../TextInput/TextInput';
+import { searchSelectItems } from '../../assets/mock-data';
 
 import './SearchInput.css';
-import { FormSelect } from '../FormSelect/FormSelect';
+import { Select } from '../Select/Select';
 
 const cnSearchInput = cn('SearchInput');
 
 type SearchInputProps = {
   disabled?: boolean;
   placeholder?: string;
-  value?: string | number;
-  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+  value?: string;
+  onChange?: (event: string | number) => void;
 };
 
 export const SearchInput = ({
@@ -22,7 +23,7 @@ export const SearchInput = ({
   onChange,
 
 }: SearchInputProps) => {
-  const handleChangeValue = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleChangeValue = (event: string | number) => {
     if (onChange) {
       onChange(event);
     }
@@ -30,14 +31,15 @@ export const SearchInput = ({
 
   return (
     <div className={cnSearchInput()}>
-      <FormSelect label="" options={['По номеру', 'По городу', 'По типу поставки', 'По типу поставки']} htmlId="Search" type="search" />
-      <input
-        className={cnSearchInput('Input')}
+      <Select options={searchSelectItems} onChange={handleChangeValue} htmlId="Search" value={value} type="search" />
+      <TextInput
+        className="Search-style"
         value={value}
         placeholder={placeholder}
         type="text"
         disabled={disabled}
         onChange={handleChangeValue}
+        htmlId="search"
       />
       <span className={cnSearchInput('Icon')}><SearchIcon /></span>
     </div>

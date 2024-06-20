@@ -85,6 +85,11 @@
     border-radius: 10px;
 }
 
+.TextInput_type_search {
+    height: 36px;
+    background-color: #2d2c32;
+}
+
 .TextInput-List {
     position: absolute;
     z-index: 10;
@@ -100,6 +105,22 @@
     border: 1px solid #cccccc;
     border-top: none;
     border-radius: 8px;
+}
+
+.Search-style {
+    background-color: inherit;
+}
+
+.Search-style:hover {
+    background-color: inherit;
+}
+
+.Search-style:focus {
+    background-color: inherit;
+}
+
+.Search-style:active {
+    background-color: inherit;
 }
 
 .TextInput-Arrow {

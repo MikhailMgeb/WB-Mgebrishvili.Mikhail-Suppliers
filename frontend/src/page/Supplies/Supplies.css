@@ -44,6 +44,10 @@
 
 }
 
+.Supplies-Search {
+    padding: 2px;
+}
+
 .Supplies-ContentLoading {
     margin-top: 50px;
     color: #cef9d9;

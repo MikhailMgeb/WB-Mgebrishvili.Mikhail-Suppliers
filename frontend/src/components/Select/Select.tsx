@@ -13,10 +13,11 @@ type SelectProps = {
   onChange: (value: string) => void;
   htmlId: string;
   value: string;
+  type: 'search' | 'text';
 };
 
 export const Select = ({
-  options, onChange, htmlId, value,
+  options, onChange, htmlId, value, type,
 }: SelectProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(value);
@@ -37,6 +38,7 @@ export const Select = ({
         rightIcon={<ChevronDown />}
         onClick={toggleDropdown}
         htmlId={htmlId}
+        type={type}
       />
       {isOpen && (
         <div className={cnSelect('List')}>
