@@ -1,0 +1,20 @@
+.FieldWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    flex: 1;
+    max-height: 44px;
+}
+
+.FieldWrapper-Label {
+    font-family: 'ALSHauss', Helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: 560;
+    line-height: 20px;
+    color: #767386;
+
+}
+
+.FieldWrapper-InputWrapper {
+
+}

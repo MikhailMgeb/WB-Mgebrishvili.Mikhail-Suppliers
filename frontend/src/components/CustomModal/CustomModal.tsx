@@ -15,6 +15,7 @@ import { getAddressForWarehouse } from '../../assets/utils';
 
 import './CustomModal.css';
 import { FormSelect } from '../FormSelect/FormSelect';
+import { FieldCalendar } from '../FieldCalendar/FieldCalendar';
 
 const cnCustomModal = cn('CustomModal');
 
@@ -29,9 +30,10 @@ const customStyles = {
     boxShadow: '0px 0px 26px 0px rgba(0, 0, 0, 0.19)',
     maxWidth: '80%',
     maxHeight: '80%',
-    padding: '32px 48px',
+    padding: '32px 46px',
     background: 'rgba(45, 44, 50, 1)',
     borderRadius: '16px',
+    scrollbarСolor: 'transparent transparent',
   },
 };
 
@@ -86,69 +88,70 @@ export const CustomModal: React.FC<CustomModalProps> = ({
       style={customStyles}
       contentLabel="Modal"
     >
-      <div className={cnCustomModal('Description')}>
-        <h2 className={cnCustomModal('Title')} ref={subtitle}>{type === 'create' ? 'Редактирование' : 'Новая поставка'}</h2>
-        <p className={cnCustomModal('TitleId')}>{id}</p>
-      </div>
-      <div className={cnCustomModal('CloseButton')}>
-        <Button scheme="cloudy" onClick={onRequestClose} icon={<IconClose />} />
-      </div>
-      <form className={cnCustomModal('From')} onSubmit={handleSubmit}>
-        {type !== 'create' && (
+      <div className={cnCustomModal()}>
+        <div className={cnCustomModal('Description')}>
+          <h2 className={cnCustomModal('Title')} ref={subtitle}>{type === 'create' ? 'Редактирование' : 'Новая поставка'}</h2>
+          <p className={cnCustomModal('TitleId')}>{id}</p>
+        </div>
+        <div className={cnCustomModal('CloseButton')}>
+          <Button scheme="cloudy" onClick={onRequestClose} icon={<IconClose />} />
+        </div>
+        <form className={cnCustomModal('From')} onSubmit={handleSubmit}>
+          {type === 'create' && (
+            <FieldCalendar
+              label="Дата поставки"
+              value={deliveryDate}
+              onChange={(value) => setDeliveryDate(value as string)}
+              htmlId="date"
+            />
+          )}
+
+          <FormSelect
+            label="Город"
+            value={city}
+            onChange={(value) => setCity(value as string)}
+            options={dropdownDataCityOption}
+            htmlId="city"
+          />
+
           <FormTextInput
-            label="Дата поставки"
-            type="date"
-            value={deliveryDate}
-            onChange={(value) => setDeliveryDate(value as string)}
+            label="Кол-во"
+            type="number"
+            value={quantity}
+            onChange={(value) => setQuantity(value as number)}
+            htmlId="quantity"
+          />
+
+          <FormSelect
+            label="Тип поставки"
+            value={deliveryType}
+            onChange={(value) => setDeliveryType(value as string)}
+            options={deliveryTypeOption}
             htmlId=""
           />
-        )}
 
-        <FormSelect
-          label="Город"
-          value={city}
-          onChange={(value) => setCity(value as string)}
-          options={dropdownDataCityOption}
-          htmlId="city"
-        />
+          <FormSelect
+            label="Склад"
+            value={warehouse}
+            onChange={(value) => setWarehouse(value as string)}
+            options={listWarehousesOption}
+            htmlId=""
+          />
 
-        <FormTextInput
-          label="Кол-во"
-          type="number"
-          value={quantity}
-          onChange={(value) => setQuantity(value as number)}
-          htmlId="quantity"
-        />
+          <FormSelect
+            label="Статус"
+            value={status}
+            onChange={(value) => setStatus(value as string)}
+            options={deliveryStatusesOption}
+            htmlId=""
+          />
 
-        <FormSelect
-          label="Тип поставки"
-          value={deliveryType}
-          onChange={(value) => setDeliveryType(value as string)}
-          options={deliveryTypeOption}
-          htmlId=""
-        />
-
-        <FormSelect
-          label="Склад"
-          value={warehouse}
-          onChange={(value) => setWarehouse(value as string)}
-          options={listWarehousesOption}
-          htmlId=""
-        />
-
-        <FormSelect
-          label="Статус"
-          value={status}
-          onChange={(value) => setStatus(value as string)}
-          options={deliveryStatusesOption}
-          htmlId=""
-        />
-
-        <div className={cnCustomModal('GroupButton')}>
-          <Button scheme="primary" text={type === 'create' ? 'Создать' : 'Сохранить'} />
-          <Button scheme="cloudy" text="Отменить" onClick={onRequestClose} />
-        </div>
-      </form>
+          <div className={cnCustomModal('GroupButton')}>
+            <Button scheme="primary" text={type === 'create' ? 'Создать' : 'Сохранить'} />
+            <Button scheme="cloudy" text="Отменить" onClick={onRequestClose} />
+          </div>
+        </form>
+      </div>
     </Modal>
   );
 };

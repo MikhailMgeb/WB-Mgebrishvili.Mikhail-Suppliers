@@ -5,7 +5,7 @@ import { Button } from '../../components/Button/Button';
 
 import { useGetSuppliesQuery } from '../../store/supplies/supplies.api';
 import AddIcon from '../../assets/icons/icon-plus.svg';
-import { SearchInput } from '../../components/SearchInput/SearchInput ';
+import { SearchInput } from '../../components/SearchInput/SearchInput';
 import { TableView } from '../../components/Table/TableView';
 import { mockData } from '../../assets/mock-data';
 import { CustomModal } from '../../components/CustomModal/CustomModal';
@@ -75,7 +75,7 @@ export const Supplies = () => {
       <CustomModal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
-        type="create"
+        type="edit"
         id={usedId}
       />
     </main>

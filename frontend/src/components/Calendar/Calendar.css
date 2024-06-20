@@ -1,0 +1,112 @@
+.Calendar {
+    width: 288px;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+}
+
+.Calendar-Header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 5px;
+
+    color: #000000;
+}
+
+.Calendar-Header .Calendar__Icon {
+    cursor: pointer;
+}
+
+.Calendar-Header .Calendar__Icon:hover {
+    opacity: 0.8;
+}
+
+.Calendar-Header_center {
+    font-family: 'ALSHauss', Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 560;
+    line-height: 20px;
+}
+
+.Calendar-Days {
+    display: flex;
+    color: #000000;
+    background-color: #ffffff;
+}
+
+.Calendar-Day {
+    flex: 1;
+    padding: 6px;
+    text-align: center;
+}
+
+.Calendar-Days .Calendar__Day:last-child {
+    border-right: none;
+}
+
+.Calendar-Body {
+    display: flex;
+    flex-direction: column;
+}
+
+.Calendar-Row {
+    display: flex;
+}
+
+.Calendar-Cell {
+    cursor: pointer;
+
+    position: relative;
+
+    flex: 1;
+
+    padding: 10px 12px;
+
+    color: #000000;
+    text-align: center;
+
+    border: 1px solid #f0f0f3;
+}
+
+.Calendar-Day_weekend {
+    color: #f96666;
+}
+
+.Calendar-Cell--disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.Calendar-Number {
+    font-size: 14px;
+}
+
+.Calendar-Number::after {
+    pointer-events: none;
+    content: '';
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: block;
+
+    width: 20px;
+    height: 20px;
+
+    opacity: 0.1;
+    border-radius: 50%;
+}
+
+.Calendar-Number:hover::after {
+    opacity: 0.2;
+}
+
+.Calendar-Cell_disabled {
+    color: #d1cfd7;
+}

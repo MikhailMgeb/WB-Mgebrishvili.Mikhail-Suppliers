@@ -1,0 +1,17 @@
+.DatePicker {
+  position: relative;
+}
+
+.DatePicker-Input {
+  cursor: pointer;
+  width: 100%;
+}
+
+.DatePicker-Calendar {
+  position: absolute;
+  z-index: 10;
+  top: 100%;
+  left: 0;
+
+  margin-top: 4px;
+}

@@ -38,8 +38,10 @@ export const TextInput = ({
     }
   };
 
+  const shouldShowShorthand = type === 'text' || type === 'date';
+
   return (
-    <div className={cnTextInput({ type, disabled, 'has-value': !!value }, className)} onClick={onClick}>
+    <div className={cnTextInput({ type, disabled }, className)} onClick={onClick}>
       <input
         className={cnTextInput('Input')}
         value={value}
@@ -49,7 +51,7 @@ export const TextInput = ({
         onChange={handleChangeValue}
         id={htmlId}
       />
-      {type !== 'date' && <span className={cnTextInput('RightIcon')}>{rightIcon || 'шт'}</span>}
+      {shouldShowShorthand && <span className={cnTextInput('RightIcon')}>{rightIcon || 'шт'}</span>}
     </div>
   );
 };
