@@ -36,10 +36,11 @@
     text-align: center;
 }
 
-.CustomModal-From {
+.CustomModal-Form {
+    width: 400px;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 10px;
 }
 
 .CustomModal-Label {

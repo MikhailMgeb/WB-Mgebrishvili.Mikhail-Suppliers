@@ -1,46 +1,63 @@
-import { useState } from 'react';
+import React, { useMemo, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { cn } from '@bem-react/classname';
 
 import { Button } from '../../components/Button/Button';
-
-import { useGetSuppliesQuery } from '../../store/supplies/supplies.api';
 import AddIcon from '../../assets/icons/icon-plus.svg';
-import { SearchInput } from '../../components/SearchInput/SearchInput ';
 import { TableView } from '../../components/Table/TableView';
 import { mockData } from '../../assets/mock-data';
 import { CustomModal } from '../../components/CustomModal/CustomModal';
+import { SupplyData } from '../../models/models';
 
 import './Supplies.css';
+import { useDeleteSupplyMutation, useGetSuppliesQuery } from '../../store/supplies/supplies.api';
+import { setSupplies } from '../../store/supplies/suppliesSlice';
+import { SearchInput } from '../../components/SearchInput/SearchInput ';
 
 const cnSupplies = cn('Supplies');
 
 export const Supplies = () => {
+  const dispatch = useDispatch();
   const { isLoading, isError, data } = useGetSuppliesQuery();
-  const [usedId, setUsedId] = useState('');
+  const [deleteSupply] = useDeleteSupplyMutation();
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [currentSupply, setCurrentSupply] = useState<SupplyData | null>(null);
 
-  const handleDelete = (id: string) => {
-    console.log(`Удалить: ${id}`);
+  const handleDelete = async (id: string) => {
+    try {
+      await deleteSupply(id).unwrap();
+      console.log(`Удалить: ${id}`);
+    } catch (error) {
+      console.error('Failed to delete the supply: ', error);
+    }
   };
 
   const handleEdit = (id: string) => {
+    const supply = suppliesData.find((item) => item.id === id);
+    if (supply) {
+      setCurrentSupply(supply);
+    }
     console.log(`Изменить: ${id}`);
     setModalIsOpen(true);
-    setUsedId(id);
   };
 
   const handleClick = () => {
     console.log('Добавить товар');
+    setCurrentSupply(null); // Очистить текущую запись для создания новой
+    setModalIsOpen(true);
   };
-  // const columns = useMemo(
-  //   () => getMainTableColumns(handleOpenModal),
-  //   [handleOpenModal],
-  // );
 
-  const suppliesData = isError || !data ? mockData : data;
+  const suppliesData: SupplyData[] = useMemo(() => {
+    if (isError || !data) {
+      return mockData;
+    }
+    dispatch(setSupplies(data));
+    return data;
+  }, [data, isError, dispatch]);
 
   const closeModal = () => {
     setModalIsOpen(false);
+    setCurrentSupply(null);
   };
 
   return (
@@ -62,7 +79,7 @@ export const Supplies = () => {
       </header>
       <section className={cnSupplies('Content')}>
         {isLoading ? <p className={cnSupplies('ContentLoading')}>Загрузка данных...</p> : null}
-        {!isError ? <p className={cnSupplies('ContentError')}>Произошла ошибка при загрузке данных.</p> : null}
+        {isError ? <p className={cnSupplies('ContentError')}>Произошла ошибка при загрузке данных.</p> : null}
         {suppliesData && suppliesData.length === 0 && <p className={cnSupplies('ContentInfo')}>Нет доступных поставок.</p>}
         {suppliesData && suppliesData.length > 0 && (
           <TableView
@@ -75,8 +92,8 @@ export const Supplies = () => {
       <CustomModal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
-        type="create"
-        id={usedId}
+        type={currentSupply ? 'edit' : 'create'}
+        supplyData={currentSupply}
       />
     </main>
   );

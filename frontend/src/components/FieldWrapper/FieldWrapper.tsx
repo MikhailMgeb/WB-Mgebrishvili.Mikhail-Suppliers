@@ -1,6 +1,8 @@
 import React from 'react';
 import { cn } from '@bem-react/classname';
 
+import './FieldWrapper.css';
+
 type FieldWrapperProps = {
   label?: string;
   children: React.ReactNode;

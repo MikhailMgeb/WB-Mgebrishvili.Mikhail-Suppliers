@@ -1,20 +1,21 @@
 /* eslint-disable max-len */
 /* eslint-disable react/jsx-no-bind */
 import { cn } from '@bem-react/classname';
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import Modal from 'react-modal';
 
 import IconClose from '../../assets/icons/icon-close.svg';
 import { Button } from '../Button/Button';
 import { FormTextInput } from '../FormTextInput/FormTextInput';
+import { FormSelect } from '../FormSelect/FormSelect';
 import {
   deliveryStatusesOption, deliveryTypeOption, dropdownDataCityOption,
   listWarehousesOption,
 } from '../MenuDropdown/DropData';
 import { getAddressForWarehouse } from '../../assets/utils';
+import { SupplyData } from '../../models/models';
 
 import './CustomModal.css';
-import { FormSelect } from '../FormSelect/FormSelect';
 
 const cnCustomModal = cn('CustomModal');
 
@@ -40,12 +41,12 @@ Modal.setAppElement('#root');
 type CustomModalProps = {
   isOpen: boolean;
   type: 'edit' | 'create';
-  id: string;
+  supplyData?: SupplyData | null;
   onRequestClose: () => void;
 };
 
 export const CustomModal: React.FC<CustomModalProps> = ({
-  isOpen, onRequestClose, type, id,
+  isOpen, onRequestClose, type, supplyData,
 }) => {
   const [deliveryDate, setDeliveryDate] = useState<string>('');
   const [city, setCity] = useState('');
@@ -54,6 +55,17 @@ export const CustomModal: React.FC<CustomModalProps> = ({
   const [warehouse, setWarehouse] = useState('');
   const [status, setStatus] = useState('');
   const subtitle = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    if (supplyData) {
+      setDeliveryDate(supplyData.date);
+      setCity(supplyData.city);
+      setQuantity(supplyData.quantity);
+      setDeliveryType(supplyData.supplyType);
+      setWarehouse(supplyData.warehouseName);
+      setStatus(supplyData.status);
+    }
+  }, [supplyData]);
 
   function afterOpenModal() {
     if (subtitle.current) {
@@ -66,14 +78,15 @@ export const CustomModal: React.FC<CustomModalProps> = ({
     const warehouseAddress = getAddressForWarehouse(warehouse);
 
     const formData = {
-      id,
-      deliveryDate,
+      id: supplyData?.id || '',
+      date: deliveryDate,
       city,
       quantity,
-      deliveryType,
-      warehouse,
+      supplyType: deliveryType,
+      warehouseName: warehouse,
       warehouseAddress,
       status,
+      key: supplyData?.key || '',
     };
     console.log('Form Data:', formData);
   };
@@ -87,14 +100,14 @@ export const CustomModal: React.FC<CustomModalProps> = ({
       contentLabel="Modal"
     >
       <div className={cnCustomModal('Description')}>
-        <h2 className={cnCustomModal('Title')} ref={subtitle}>{type === 'create' ? 'Редактирование' : 'Новая поставка'}</h2>
-        <p className={cnCustomModal('TitleId')}>{id}</p>
+        <h2 className={cnCustomModal('Title')} ref={subtitle}>{type === 'create' ? 'Новая поставка' : 'Редактирование'}</h2>
+        {supplyData && <p className={cnCustomModal('TitleId')}>{supplyData.id}</p>}
       </div>
       <div className={cnCustomModal('CloseButton')}>
         <Button scheme="cloudy" onClick={onRequestClose} icon={<IconClose />} />
       </div>
-      <form className={cnCustomModal('From')} onSubmit={handleSubmit}>
-        {type !== 'create' && (
+      <form className={cnCustomModal('Form')} onSubmit={handleSubmit}>
+        {type === 'create' && (
           <FormTextInput
             label="Дата поставки"
             type="date"

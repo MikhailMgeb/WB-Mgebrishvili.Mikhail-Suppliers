@@ -23,9 +23,6 @@
     align-items: center;
     justify-content: space-between;
 
-
-    padding: 8;
-
     font-family: 'ALSHauss', Helvetica, sans-serif;
     font-size: 16px;
     font-weight: 440;
@@ -39,6 +36,7 @@
 }
 
 .Select-Select_type_search {
+    box-sizing: border-box;
     overflow: hidden;
     padding: 0 6px;
     color: #ffffff;
