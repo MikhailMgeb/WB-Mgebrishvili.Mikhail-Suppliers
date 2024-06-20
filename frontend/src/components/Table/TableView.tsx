@@ -138,14 +138,14 @@ export const TableView = ({ cards, onDelete, onEdit }: TableRowProps) => {
       key: 'actions',
       width: 32,
       render: (_text: string, record: SupplyData, rowIndex: number) => (
-        <div className="action-buttons">
+        <div className="action-buttons" key={`actions-${record.id}`}>
           <Button
             scheme="cloudy"
             modification="alpha"
             icon={<IconMenu />}
             onClick={() => handleOpenMenuClick(rowIndex)}
           />
-          <div ref={(el) => (menuRefs.current[rowIndex] = el)}>
+          <div ref={(el) => (menuRefs.current[rowIndex] = el)} key={`menu-${record.id}`}>
             {openMenuIndex === rowIndex && (
               <MenuDropdown
                 options={['Редактировать', 'Удалить']}
@@ -168,8 +168,8 @@ export const TableView = ({ cards, onDelete, onEdit }: TableRowProps) => {
   return (
     <Table
       columns={columns}
-      data={cards}
-      rowKey={(record: SupplyData) => record.id}
+      data={cards.map((card) => ({ ...card, key: card.id }))}
+      rowKey={(record) => record.id}
       className={cnTableView()}
       components={{
         header: {

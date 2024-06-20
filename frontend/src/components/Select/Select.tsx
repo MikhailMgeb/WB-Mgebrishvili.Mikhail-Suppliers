@@ -10,19 +10,16 @@ const cnSelect = cn('Select');
 
 type SelectProps = {
   options: string[];
-  type?: 'search';
   onChange: (value: string) => void;
-  value?: string | number;
   htmlId: string;
 };
 
 export const Select = ({
-  options, type, onChange, value, htmlId,
+  options, onChange, htmlId,
 }: SelectProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(options[0]);
+  const [selectedOption, setSelectedOption] = useState('');
 
-  console.log(value);
   const toggleDropdown = () => setIsOpen((!isOpen));
 
   const handleOptionClick = (option: string) => {
@@ -34,7 +31,7 @@ export const Select = ({
   return (
     <div className={cnSelect()}>
       <TextInput
-        className={cnSelect('Select', { type })}
+        className={cnSelect('Select')}
         value={selectedOption}
         rightIcon={<ChevronDown />}
         onClick={toggleDropdown}

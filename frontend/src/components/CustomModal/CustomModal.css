@@ -27,13 +27,41 @@
 
 .CustomModal-CloseButton {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 5px;
+    right: 5px;
 
     width: 44px;
     height: 44px;
 
     text-align: center;
+}
+
+.CustomModal-CloseButton::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, #ffffff30 0%, transparent 80%);
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.CustomModal-CloseButton:hover::before {
+    opacity: 1;
+}
+
+.CustomModal-CloseButton svg {
+    width: 100%;
+    height: 100%;
+    fill: #ffffff;
+    transition: fill 0.3s ease;
+}
+
+.CustomModal-CloseButton:hover svg {
+    fill: #ffffff00;
 }
 
 .CustomModal-Form {

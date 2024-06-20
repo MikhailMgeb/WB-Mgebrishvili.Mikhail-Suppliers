@@ -4,7 +4,7 @@ import { SupplyData } from '../../models/models';
 
 export const suppliesApi = createApi({
   reducerPath: 'suppliesApi',
-  baseQuery: fetchBaseQuery({ baseUrl: '/api' }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000/api' }),
   endpoints: (builder) => ({
     getSupplies: builder.query<SupplyData[], void>({
       query: () => 'supplies',
@@ -16,7 +16,7 @@ export const suppliesApi = createApi({
         body: newSupply,
       }),
     }),
-    updateSupply: builder.mutation<void, Partial<SupplyData> & Pick<SupplyData, 'id'>>({
+    updateSupply: builder.mutation<void, Partial<SupplyData> & { id: string }>({
       query: ({ id, ...updatedSupply }) => ({
         url: `supplies/${id}`,
         method: 'PUT',

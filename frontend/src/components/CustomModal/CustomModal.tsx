@@ -14,8 +14,10 @@ import {
 } from '../MenuDropdown/DropData';
 import { getAddressForWarehouse } from '../../assets/utils';
 import { SupplyData } from '../../models/models';
+import { FieldCalendar } from '../FieldCalendar/FieldCalendar';
 
 import './CustomModal.css';
+import { useAddSupplyMutation, useUpdateSupplyMutation } from '../../store/supplies/supplies.api';
 
 const cnCustomModal = cn('CustomModal');
 
@@ -56,6 +58,9 @@ export const CustomModal: React.FC<CustomModalProps> = ({
   const [status, setStatus] = useState('');
   const subtitle = useRef<HTMLHeadingElement>(null);
 
+  const [addSupply] = useAddSupplyMutation();
+  const [updateSupply] = useUpdateSupplyMutation();
+
   useEffect(() => {
     if (supplyData) {
       setDeliveryDate(supplyData.date);
@@ -73,12 +78,12 @@ export const CustomModal: React.FC<CustomModalProps> = ({
     }
   }
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const warehouseAddress = getAddressForWarehouse(warehouse);
 
     const formData = {
-      id: supplyData?.id || '',
+      id: supplyData?.id,
       date: deliveryDate,
       city,
       quantity,
@@ -86,9 +91,18 @@ export const CustomModal: React.FC<CustomModalProps> = ({
       warehouseName: warehouse,
       warehouseAddress,
       status,
-      key: supplyData?.key || '',
     };
-    console.log('Form Data:', formData);
+
+    try {
+      if (type === 'create') {
+        await addSupply(formData as Partial<SupplyData>);
+      } else if (type === 'edit' && supplyData) {
+        await updateSupply({ ...formData, id: supplyData.id } as SupplyData);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+    onRequestClose();
   };
 
   return (
@@ -104,13 +118,12 @@ export const CustomModal: React.FC<CustomModalProps> = ({
         {supplyData && <p className={cnCustomModal('TitleId')}>{supplyData.id}</p>}
       </div>
       <div className={cnCustomModal('CloseButton')}>
-        <Button scheme="cloudy" onClick={onRequestClose} icon={<IconClose />} />
+        <Button scheme="cloudy" onClick={() => onRequestClose} icon={<IconClose />} />
       </div>
       <form className={cnCustomModal('Form')} onSubmit={handleSubmit}>
         {type === 'create' && (
-          <FormTextInput
+          <FieldCalendar
             label="Дата поставки"
-            type="date"
             value={deliveryDate}
             onChange={(value) => setDeliveryDate(value as string)}
             htmlId=""
@@ -119,7 +132,6 @@ export const CustomModal: React.FC<CustomModalProps> = ({
 
         <FormSelect
           label="Город"
-          value={city}
           onChange={(value) => setCity(value as string)}
           options={dropdownDataCityOption}
           htmlId="city"
@@ -135,7 +147,6 @@ export const CustomModal: React.FC<CustomModalProps> = ({
 
         <FormSelect
           label="Тип поставки"
-          value={deliveryType}
           onChange={(value) => setDeliveryType(value as string)}
           options={deliveryTypeOption}
           htmlId=""
@@ -143,7 +154,6 @@ export const CustomModal: React.FC<CustomModalProps> = ({
 
         <FormSelect
           label="Склад"
-          value={warehouse}
           onChange={(value) => setWarehouse(value as string)}
           options={listWarehousesOption}
           htmlId=""
@@ -151,7 +161,6 @@ export const CustomModal: React.FC<CustomModalProps> = ({
 
         <FormSelect
           label="Статус"
-          value={status}
           onChange={(value) => setStatus(value as string)}
           options={deliveryStatusesOption}
           htmlId=""

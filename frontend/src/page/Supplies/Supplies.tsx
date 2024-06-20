@@ -8,11 +8,10 @@ import { TableView } from '../../components/Table/TableView';
 import { mockData } from '../../assets/mock-data';
 import { CustomModal } from '../../components/CustomModal/CustomModal';
 import { SupplyData } from '../../models/models';
+import { useDeleteSupplyMutation, useGetSuppliesQuery } from '../../store/supplies/supplies.api';
+import { SearchInput } from '../../components/SearchInput/SearchInput';
 
 import './Supplies.css';
-import { useDeleteSupplyMutation, useGetSuppliesQuery } from '../../store/supplies/supplies.api';
-import { setSupplies } from '../../store/supplies/suppliesSlice';
-import { SearchInput } from '../../components/SearchInput/SearchInput ';
 
 const cnSupplies = cn('Supplies');
 
@@ -20,15 +19,17 @@ export const Supplies = () => {
   const dispatch = useDispatch();
   const { isLoading, isError, data } = useGetSuppliesQuery();
   const [deleteSupply] = useDeleteSupplyMutation();
+
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [currentSupply, setCurrentSupply] = useState<SupplyData | null>(null);
 
   const handleDelete = async (id: string) => {
+    console.log(id);
     try {
       await deleteSupply(id).unwrap();
       console.log(`Удалить: ${id}`);
     } catch (error) {
-      console.error('Failed to delete the supply: ', error);
+      console.error('Ошибка', error);
     }
   };
 
@@ -37,13 +38,11 @@ export const Supplies = () => {
     if (supply) {
       setCurrentSupply(supply);
     }
-    console.log(`Изменить: ${id}`);
     setModalIsOpen(true);
   };
 
   const handleClick = () => {
-    console.log('Добавить товар');
-    setCurrentSupply(null); // Очистить текущую запись для создания новой
+    setCurrentSupply(null);
     setModalIsOpen(true);
   };
 
@@ -51,7 +50,6 @@ export const Supplies = () => {
     if (isError || !data) {
       return mockData;
     }
-    dispatch(setSupplies(data));
     return data;
   }, [data, isError, dispatch]);
 

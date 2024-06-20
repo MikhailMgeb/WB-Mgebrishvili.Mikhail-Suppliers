@@ -50,3 +50,7 @@
 .Button_theme_primary:hover {
     background-color: #6366f1;
 }
+
+.Button-Icon:hover::before {
+    opacity: 1;
+}

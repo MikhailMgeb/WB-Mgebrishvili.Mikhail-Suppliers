@@ -3,7 +3,7 @@ import { cn } from '@bem-react/classname';
 
 import SearchIcon from '../../assets/icons/icon-search.svg';
 
-import './SearchInput .css';
+import './SearchInput.css';
 import { FormSelect } from '../FormSelect/FormSelect';
 
 const cnSearchInput = cn('SearchInput');
