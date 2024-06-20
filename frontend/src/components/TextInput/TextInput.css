@@ -1,4 +1,6 @@
 .TextInput {
+    cursor: pointer;
+
     position: relative;
 
     display: flex;

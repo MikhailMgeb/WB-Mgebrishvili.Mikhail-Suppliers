@@ -52,7 +52,7 @@ export const CustomModal: React.FC<CustomModalProps> = ({
 }) => {
   const [deliveryDate, setDeliveryDate] = useState<string>('');
   const [city, setCity] = useState('');
-  const [quantity, setQuantity] = useState<number>();
+  const [quantity, setQuantity] = useState<number>(0);
   const [deliveryType, setDeliveryType] = useState('');
   const [warehouse, setWarehouse] = useState('');
   const [status, setStatus] = useState('');
@@ -118,7 +118,7 @@ export const CustomModal: React.FC<CustomModalProps> = ({
         {supplyData && <p className={cnCustomModal('TitleId')}>{supplyData.id}</p>}
       </div>
       <div className={cnCustomModal('CloseButton')}>
-        <Button scheme="cloudy" onClick={() => onRequestClose} icon={<IconClose />} />
+        <Button scheme="cloudy" onClick={onRequestClose} icon={<IconClose />} />
       </div>
       <form className={cnCustomModal('Form')} onSubmit={handleSubmit}>
         {type === 'create' && (

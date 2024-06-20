@@ -10,4 +10,4 @@ export const dropdownDataCityOption = [
 
 export const deliveryTypeOption = ['Короб', 'Монопаллета'];
 export const listWarehousesOption = ['Склад', 'СЦ Абакан', 'Черная грязь', 'Внуково', 'Белая дача', 'Электросталь', 'Вёшки'];
-export const deliveryStatusesOption = ['В пути', 'Задерживается'];
+export const deliveryStatusesOption = ['Задерживается', 'В пути'];

@@ -6,11 +6,11 @@
     box-sizing: border-box;
     height: 100%;
     max-height: 44px;
+    margin: 5px;
     padding: 5px;
 
     background-color: #3d3d42;
     border-radius: 14px;
-    margin: 5px;
 }
 
 .SearchInput-Input {

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { cn } from '@bem-react/classname';
+import { ru } from 'date-fns/locale';
+
 import {
   format,
   addMonths,
@@ -12,7 +14,6 @@ import {
   isSameMonth,
   isSameDay,
 } from 'date-fns';
-import { ru } from 'date-fns/locale';
 
 import IconChevronLeft from '../../assets/icons/arrow-left.svg';
 import IconChevronRight from '../../assets/icons/arrow-right.svg';
@@ -20,8 +21,8 @@ import IconChevronRight from '../../assets/icons/arrow-right.svg';
 import './Calendar.css';
 
 type CalendarProps = {
-  selectedDate: Date;
-  onDateChange: (date: Date) => void;
+  selectedDate: Date | string;
+  onDateChange: (date: Date | string) => void;
 };
 
 const cnCalendar = cn('Calendar');
@@ -93,7 +94,7 @@ export const Calendar = ({ selectedDate, onDateChange }: CalendarProps) => {
               selected: isSameDay(day, selectedDate),
             })}
             key={day.toISOString()}
-            onClick={() => onDateChange(cloneDay)}
+            onClick={() => onDateChange(format(new Date(cloneDay), 'yyyy-MM-dd'))}
           >
             <span className={cnCalendar('Number')}>{formattedDate}</span>
           </div>,

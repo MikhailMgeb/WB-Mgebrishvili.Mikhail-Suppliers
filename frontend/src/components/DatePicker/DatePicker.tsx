@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ru } from 'date-fns/locale/ru';
 import { cn } from '@bem-react/classname';
 import { format } from 'date-fns';
 
@@ -11,7 +12,7 @@ import './DatePicker.css';
 
 type DatePickerProps = {
   value?: Date;
-  onChange: (date: Date) => void;
+  onChange: (date: Date | string) => void;
   htmlId: string;
   placeholder: string;
 };
@@ -19,12 +20,15 @@ type DatePickerProps = {
 const cnDatePicker = cn('DatePicker');
 
 export const DatePicker = ({
-  value, onChange, htmlId, placeholder,
+  value,
+  onChange,
+  htmlId,
+  placeholder,
 }: DatePickerProps) => {
   const [showCalendar, setShowCalendar] = useState<boolean>(false);
-  const [selectedDate, setSelectedDate] = useState<Date>(value || new Date());
+  const [selectedDate, setSelectedDate] = useState<Date | string>(value || new Date());
 
-  const handleDateChange = (date: Date) => {
+  const handleDateChange = (date: Date | string) => {
     setSelectedDate(date);
     onChange(date);
     setShowCalendar(false);
@@ -36,7 +40,7 @@ export const DatePicker = ({
     <div className={cnDatePicker()}>
       <TextInput
         className={cnDatePicker('Input')}
-        value={format(selectedDate, 'dd.MM.yyyy')}
+        value={format(selectedDate, 'yyyy-MM-dd', { locale: ru })}
         rightIcon={<CalendarIcon />}
         onClick={toggleCalendar}
         htmlId={htmlId}

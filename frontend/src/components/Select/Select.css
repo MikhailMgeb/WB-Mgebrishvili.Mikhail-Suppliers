@@ -36,9 +36,11 @@
 }
 
 .Select-Select_type_search {
-    box-sizing: border-box;
     overflow: hidden;
+
+    box-sizing: border-box;
     padding: 0 6px;
+
     color: #ffffff;
     white-space: nowrap;
 }

@@ -1,7 +1,9 @@
 .Calendar {
     width: 288px;
     padding: 10px;
+
     font-family: Arial, sans-serif;
+
     background-color: #ffffff;
     border: 1px solid #cccccc;
     border-radius: 8px;
