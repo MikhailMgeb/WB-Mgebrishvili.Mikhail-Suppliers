@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
 import type { Request, Response } from 'express';
-import { v4 as uuidv4 } from 'uuid';
+import { uid } from 'uid';
 
 import { Supply, loadSuppliesFromFile, saveSuppliesToFile } from '../utils/fileUtils';
 
@@ -20,7 +20,7 @@ export const createSupply = async (req: Request, res: Response) => {
     const dataSupplies = loadSuppliesFromFile();
 
     if (!createdSupply.id) {
-      createdSupply.id = uuidv4();
+      createdSupply.id = uid();
     } else {
       const isCheckSupply = dataSupplies.some((supply) => supply.id === createdSupply.id);
       if (isCheckSupply) {
@@ -49,12 +49,13 @@ export const updateSupply = (req: Request, res: Response) => {
     }
 
     const updatedFields = req.body as Supply;
-    dataSupplies[indexToUpdate] = updatedFields;
+    dataSupplies[indexToUpdate] = { ...dataSupplies[indexToUpdate], ...updatedFields };
 
     saveSuppliesToFile(dataSupplies);
 
-    res.json({ message: 'Supply successfully update', status: 'success' });
+    res.json({ message: 'Supply successfully updated', status: 'success' });
   } catch (error) {
+    console.error('Failed to update supply:', error);
     res.status(500).json({ error: 'Failed to update supply' });
   }
 };

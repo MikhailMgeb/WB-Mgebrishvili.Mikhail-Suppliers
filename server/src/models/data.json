@@ -3,7 +3,7 @@
     "id": "1548141",
     "date": "2024-06-12",
     "city": "Тверь",
-    "quantity": 99922,
+    "quantity": 91,
     "supplyType": "Короб",
     "warehouseName": "Внуково",
     "warehouseAddress": "пр. Победы, д. 25, Санкт-Петербург",
@@ -55,4 +55,3 @@
     "key": "5"
   }
 ]
-
