@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { cn } from '@bem-react/classname';
 
 import { Button } from '../../components/Button/Button';

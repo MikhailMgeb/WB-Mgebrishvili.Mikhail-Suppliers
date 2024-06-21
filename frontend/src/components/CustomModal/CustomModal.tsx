@@ -46,9 +46,9 @@ type CustomModalProps = {
   onRequestClose: () => void;
 };
 
-export const CustomModal: React.FC<CustomModalProps> = ({
+export const CustomModal = ({
   isOpen, onRequestClose, type, supplyData,
-}) => {
+}: CustomModalProps) => {
   const [deliveryDate, setDeliveryDate] = useState<string>('');
   const [city, setCity] = useState<string>('');
   const [quantity, setQuantity] = useState<number>(0);

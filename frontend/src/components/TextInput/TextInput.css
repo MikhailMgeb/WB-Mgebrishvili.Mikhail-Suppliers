@@ -10,13 +10,13 @@
     box-sizing: border-box;
     width: 100%;
 
+    font-family: 'ALSHauss', Helvetica, sans-serif;
+
     background-color: #ffffff14;
     border-radius: 10px;
 }
 
 .TextInput-Input {
-    flex: 1;
-
     margin: 0 10px;
     padding: 12px;
 
@@ -29,25 +29,6 @@
     background-color: transparent;
     border: none;
     outline: none;
-}
-
-
-.TextInput:focus-within {
-    background-color: #ffffff3d;
-
-}
-
-.TextInput-Input:focus {
-    border: none;
-}
-
-.TextInput-RightIcon {
-    margin-right: 15px;
-    color: #ffffff5c;
-}
-
-.TextInput:focus-within .TextInput-RightIcon {
-    color: #ffffff;
 }
 
 .TextInput-Option {
@@ -73,7 +54,6 @@
     width: 100%;
     padding: 8px 20px;
 
-    font-family: 'ALSHauss', Helvetica, sans-serif;
     font-size: 16px;
     font-weight: 440;
     line-height: 20px;
@@ -128,11 +108,35 @@
     transition: transform 0.2s;
 }
 
-.TextInput-Arrow.TextInput-Arrow_open {
+.TextInput-Arrow_open {
     transform: rotate(180deg);
 }
 
 .TextInput-Option:hover {
     cursor: pointer;
     background-color: #f1f1f1;
+}
+
+.TextInput:focus-within {
+    background-color: #ffffff3d;
+}
+
+.TextInput-Input:focus {
+    border: none;
+}
+
+.TextInput-RightIcon {
+    margin-right: 15px;
+    color: #ffffff5c;
+}
+
+.TextInput:focus-within .TextInput-RightIcon {
+    color: #ffffff;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+
+    opacity: 0;
+    margin: 0;
 }

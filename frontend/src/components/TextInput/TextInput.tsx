@@ -50,6 +50,7 @@ export const TextInput = ({
         id={htmlId}
       />
       {rightIcon ? <span className={cnTextInput('RightIcon')}>{rightIcon || 'шт'}</span> : null}
+      {type === 'number' ? <span className={cnTextInput('RightIcon')}>шт</span> : null}
     </div>
   );
 };

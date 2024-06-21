@@ -1,11 +1,11 @@
 import { cn } from '@bem-react/classname';
 
+import { Select } from '../Select/Select';
 import SearchIcon from '../../assets/icons/icon-search.svg';
 import { TextInput } from '../TextInput/TextInput';
 import { searchSelectItems } from '../../assets/mock-data';
 
 import './SearchInput.css';
-import { Select } from '../Select/Select';
 
 const cnSearchInput = cn('SearchInput');
 
