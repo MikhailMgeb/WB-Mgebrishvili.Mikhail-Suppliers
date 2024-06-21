@@ -40,7 +40,7 @@ export const DatePicker = ({
     <div className={cnDatePicker()}>
       <TextInput
         className={cnDatePicker('Input')}
-        value={format(selectedDate, 'yyyy-MM-dd', { locale: ru })}
+        value={format(selectedDate, 'dd-MM-yyyy', { locale: ru })}
         rightIcon={<CalendarIcon />}
         onClick={toggleCalendar}
         htmlId={htmlId}

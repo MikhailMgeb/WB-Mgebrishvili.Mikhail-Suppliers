@@ -49,7 +49,7 @@ export const TextInput = ({
         onChange={handleChangeValue}
         id={htmlId}
       />
-      {type === 'number' && <span className={cnTextInput('RightIcon')}>{rightIcon || 'шт'}</span>}
+      {rightIcon ? <span className={cnTextInput('RightIcon')}>{rightIcon || 'шт'}</span> : null}
     </div>
   );
 };

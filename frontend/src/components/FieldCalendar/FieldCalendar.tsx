@@ -1,13 +1,11 @@
-import React from 'react';
-
 import { DatePicker } from '../DatePicker/DatePicker';
 import { FieldWrapper } from '../FieldWrapper/FieldWrapper';
 
 type FieldCalendarProps = {
   label?: string;
   placeholder?: string;
-  value?: string | number | Date; // Добавлен тип Date для value
-  onChange?: (value: string | number | Date) => void; // Изменен тип onChange
+  value?: string | number | Date;
+  onChange?: (value: string | Date) => void;
   htmlId: string;
 };
 
@@ -18,7 +16,7 @@ export const FieldCalendar = ({
   onChange,
   htmlId,
 }: FieldCalendarProps) => {
-  const handleDataChange = (date: Date) => {
+  const handleDataChange = (date: Date | string) => {
     if (onChange) {
       onChange(date);
     }

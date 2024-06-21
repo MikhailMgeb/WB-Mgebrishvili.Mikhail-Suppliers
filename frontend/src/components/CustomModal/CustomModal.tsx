@@ -61,17 +61,22 @@ export const CustomModal: React.FC<CustomModalProps> = ({
   const [updateSupply] = useUpdateSupplyMutation();
 
   useEffect(() => {
-    if (supplyData) {
+    if (type === 'edit' && supplyData) {
       setDeliveryDate(supplyData.date || '');
       setCity(supplyData.city || '');
       setQuantity(supplyData.quantity || 0);
       setDeliveryType(supplyData.supplyType || '');
       setWarehouse(supplyData.warehouseName || '');
       setStatus(supplyData.status || '');
+    } else if (type === 'create') {
+      setDeliveryDate('');
+      setCity('');
+      setQuantity(0);
+      setDeliveryType('');
+      setWarehouse('');
+      setStatus('');
     }
-  }, [supplyData]);
-
-  console.log(supplyData);
+  }, [supplyData, type]);
 
   function afterOpenModal() {
     if (subtitle.current) {
@@ -122,14 +127,12 @@ export const CustomModal: React.FC<CustomModalProps> = ({
         <Button scheme="cloudy" onClick={onRequestClose} icon={<IconClose />} />
       </div>
       <form className={cnCustomModal('Form')} onSubmit={handleSubmit}>
-        {type === 'create' && (
-          <FieldCalendar
-            label="Дата поставки"
-            value={deliveryDate}
-            onChange={(value) => setDeliveryDate(value as string)}
-            htmlId=""
-          />
-        )}
+        <FieldCalendar
+          label="Дата поставки"
+          value={deliveryDate}
+          onChange={(value) => setDeliveryDate(value as string)}
+          htmlId="calendar"
+        />
 
         <FormSelect
           label="Город"

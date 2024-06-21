@@ -1,5 +1,4 @@
 import React, { useMemo, useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { cn } from '@bem-react/classname';
 
 import { Button } from '../../components/Button/Button';
@@ -16,7 +15,6 @@ import './Supplies.css';
 const cnSupplies = cn('Supplies');
 
 export const Supplies = () => {
-  const dispatch = useDispatch();
   const { isLoading, isError, data } = useGetSuppliesQuery();
   const [deleteSupply] = useDeleteSupplyMutation();
 
@@ -24,7 +22,6 @@ export const Supplies = () => {
   const [currentSupply, setCurrentSupply] = useState<SupplyData | null>(null);
 
   const handleDelete = async (id: string) => {
-    console.log(id);
     try {
       await deleteSupply(id).unwrap();
       console.log(`Удалить: ${id}`);
@@ -37,8 +34,8 @@ export const Supplies = () => {
     const supply = suppliesData.find((item) => item.id === id);
     if (supply) {
       setCurrentSupply(supply);
+      setModalIsOpen(true);
     }
-    setModalIsOpen(true);
   };
 
   const handleClick = () => {
@@ -51,7 +48,7 @@ export const Supplies = () => {
       return mockData;
     }
     return data;
-  }, [data, isError, dispatch]);
+  }, [data, isError]);
 
   const closeModal = () => {
     setModalIsOpen(false);
