@@ -1,8 +1,8 @@
+/* eslint-disable no-use-before-define */
 /* eslint-disable react/jsx-props-no-spreading */
 //* eslint-disable @typescript-eslint/no-explicit-any */
 import { cn } from '@bem-react/classname';
 import { useForm, Controller } from 'react-hook-form';
-import { useSearchParams } from 'react-router-dom';
 
 import { CustomModal } from '../CustomModal/CustomModal';
 import { Button } from '../Button/Button';
@@ -11,7 +11,7 @@ import { FormSelect } from '../FormSelect/FormSelect';
 import { FieldCalendar } from '../FieldCalendar/FieldCalendar';
 import { getAddressForWarehouse } from '../../assets/utils';
 import { SupplyData } from '../../models/models';
-import { useAddSupplyMutation, useUpdateSupplyMutation } from '../../store/supplies/supplies.api';
+import { useAddSupplyMutation, useGetSupplyByIdQuery, useUpdateSupplyMutation } from '../../store/supplies/supplies.api';
 
 import {
   deliveryStatusesOption,
@@ -26,6 +26,7 @@ type SupplyFormProps = {
   onRequestClose: () => void;
   isModalOpen: boolean;
   onCloseModal: () => void;
+  supplyId?: string;
 };
 
 const cnSupplyForm = cn('SupplyForm');
@@ -34,15 +35,17 @@ export const SupplyForm = ({
   onRequestClose,
   onCloseModal,
   isModalOpen,
+  supplyId,
 }: SupplyFormProps) => {
-  const [searchParams] = useSearchParams();
-  const supplyId = searchParams.get('supplyId');
-  const isEditableModal = supplyId !== null;
+  const isEditableModal = supplyId !== undefined;
 
   const [addSupply] = useAddSupplyMutation();
   const [updateSupply] = useUpdateSupplyMutation();
-  const { handleSubmit, control } = useForm<SupplyData>({
-    // values: supplyData,
+  const { data } = useGetSupplyByIdQuery(supplyId || '', { skip: supplyId === undefined });
+  const {
+    handleSubmit, control,
+  } = useForm<SupplyData>({
+    values: data,
   });
 
   const onSubmit = async (formData: SupplyData) => {
@@ -76,19 +79,22 @@ export const SupplyForm = ({
             />
           )}
         />
+
         <Controller
           name="city"
           control={control}
-          render={({ field: { value, onChange } }) => (
-            <FormSelect
-              label="city"
-              options={dropdownDataCityOption}
-              value={value}
-              onChange={onChange}
-              htmlId="city"
-              type="text"
-            />
-          )}
+          render={({ field: { value, onChange } }) => {
+            return (
+              <FormSelect
+                label="city"
+                options={dropdownDataCityOption}
+                value={value}
+                onChange={onChange}
+                htmlId="city"
+                type="text"
+              />
+            );
+          }}
         />
         <Controller
           name="quantity"
@@ -145,7 +151,7 @@ export const SupplyForm = ({
             />
           )}
         />
-        <div className="CustomModal-GroupButton">
+        <div className={cnSupplyForm('GroupButton')}>
           <Button
             scheme="primary"
             text={supplyId ? 'Сохранить' : 'Создать'}

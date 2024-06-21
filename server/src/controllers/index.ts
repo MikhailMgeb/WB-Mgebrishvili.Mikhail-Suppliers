@@ -14,6 +14,23 @@ export const getAllSupplies = (_req: Request, res: Response) => {
   }
 };
 
+export const getSupplyById = (req: Request, res: Response) => {
+  try {
+    const dataSupplies = loadSuppliesFromFile();
+    const { supplyId } = req.params;
+
+    const currentSupply = dataSupplies.find((supply) => supply.id === supplyId);
+
+    if (!currentSupply) {
+      return res.status(400).json({ error: 'There is no supply with this ID.' });
+    }
+
+    res.status(200).json(currentSupply);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to delete supply' });
+  }
+};
+
 export const createSupply = async (req: Request, res: Response) => {
   try {
     const createdSupply = req.body;

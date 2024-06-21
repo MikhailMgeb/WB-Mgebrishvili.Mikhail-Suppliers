@@ -1,6 +1,4 @@
 import { useMemo, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-
 import { cn } from '@bem-react/classname';
 
 import { Button } from '../../components/Button/Button';
@@ -10,9 +8,9 @@ import { mockData } from '../../assets/mock-data';
 import { SupplyData } from '../../models/models';
 import { useDeleteSupplyMutation, useGetSuppliesQuery } from '../../store/supplies/supplies.api';
 import { SearchInput } from '../../components/SearchInput/SearchInput';
+import { SupplyForm } from '../../components/SuppliyForm/SuppliyForm';
 
 import './Supplies.css';
-import { SupplyForm } from '../../components/SuppliyForm/SuppliyForm';
 
 const cnSupplies = cn('Supplies');
 
@@ -20,7 +18,7 @@ export const Supplies = () => {
   const { isLoading, isError, data } = useGetSuppliesQuery();
   const [deleteSupply] = useDeleteSupplyMutation();
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const navigate = useNavigate();
+  const [supplyId, setSupplyId] = useState<undefined | string>(undefined);
 
   const handleDelete = async (id: string) => {
     try {
@@ -32,9 +30,7 @@ export const Supplies = () => {
   };
 
   const handleEdit = (id: string) => {
-    navigate({
-      search: `?supplyId=${id}`,
-    });
+    setSupplyId(id);
     setModalIsOpen(true);
   };
 
@@ -51,6 +47,7 @@ export const Supplies = () => {
 
   const closeModal = () => {
     setModalIsOpen(false);
+    setSupplyId(undefined);
   };
 
   return (
@@ -83,6 +80,7 @@ export const Supplies = () => {
         )}
       </section>
       <SupplyForm
+        supplyId={supplyId}
         isModalOpen={modalIsOpen}
         onCloseModal={closeModal}
         onRequestClose={closeModal}

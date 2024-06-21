@@ -79,12 +79,3 @@
     line-height: 16px;
     color: #767386;
 }
-
-.CustomModal-GroupButton {
-    display: flex;
-    gap: 12px;
-
-    max-width: 184px;
-    height: 36px;
-    margin-top: 12px;
-}

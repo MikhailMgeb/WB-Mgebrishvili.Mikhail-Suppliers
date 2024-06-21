@@ -3,3 +3,12 @@
     flex-direction: column;
     gap: 8px;
 }
+
+.SupplyForm-GroupButton {
+    display: flex;
+    gap: 12px;
+
+    max-width: 184px;
+    height: 36px;
+    margin-top: 12px;
+}
