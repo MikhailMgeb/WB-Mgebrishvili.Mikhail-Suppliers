@@ -33,7 +33,7 @@ const cnSupplyForm = cn('SupplyForm');
 export const SupplyForm = ({
   onCloseModal,
   isModalOpen,
-    supplyData
+  supplyData,
 }: SupplyFormProps) => {
   const isEditableModal = supplyData !== undefined;
 
@@ -41,9 +41,9 @@ export const SupplyForm = ({
   const [updateSupply] = useUpdateSupplyMutation();
 
   const {
-    handleSubmit, control
+    handleSubmit, control,
   } = useForm<SupplyData>({
-    values: supplyData
+    values: supplyData,
   });
 
   const onSubmit = async (formData: SupplyData) => {
@@ -69,12 +69,12 @@ export const SupplyForm = ({
           name="date"
           control={control}
           render={({ field: { value, onChange } }) => (
-              <FieldCalendar
-                  label="Дата поставки"
-                  value={value}
-                  onChange={onChange}
-                  htmlId="calendar"
-              />
+            <FieldCalendar
+              label="Дата поставки"
+              value={value}
+              onChange={onChange}
+              htmlId="calendar"
+            />
           )}
         />
 

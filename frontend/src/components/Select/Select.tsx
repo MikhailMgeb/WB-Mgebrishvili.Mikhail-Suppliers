@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import { cn } from '@bem-react/classname';
 
 import ChevronDown from '../../assets/icons/icon-chevron-down.svg';

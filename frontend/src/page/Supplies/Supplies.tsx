@@ -6,7 +6,7 @@ import AddIcon from '../../assets/icons/icon-plus.svg';
 import { TableView } from '../../components/Table/TableView';
 import { mockData } from '../../assets/mock-data';
 import { SupplyData } from '../../models/models';
-import {useDeleteSupplyMutation, useGetSuppliesQuery, useGetSupplyByIdQuery} from '../../store/supplies/supplies.api';
+import { useDeleteSupplyMutation, useGetSuppliesQuery, useGetSupplyByIdQuery } from '../../store/supplies/supplies.api';
 import { SearchInput } from '../../components/SearchInput/SearchInput';
 import { SupplyForm } from '../../components/SuppliyForm/SuppliyForm';
 
@@ -30,10 +30,10 @@ export const Supplies = () => {
   };
 
   const handleEdit = (id: string) => {
-   const supply = data?.find((supply) => supply.id === id);
-   if (supply) {
-    setCurrentSupply(supply);
-   }
+    const supply = data?.find((supply) => supply.id === id);
+    if (supply) {
+      setCurrentSupply(supply);
+    }
     setIsModalOpen(true);
   };
 
@@ -83,11 +83,11 @@ export const Supplies = () => {
         )}
       </section>
       {isModalOpen && (
-          <SupplyForm
-              supplyData={currentSupply}
-              isModalOpen={isModalOpen}
-              onCloseModal={closeModal}
-          />
+      <SupplyForm
+        supplyData={currentSupply}
+        isModalOpen={isModalOpen}
+        onCloseModal={closeModal}
+      />
       )}
     </main>
   );
