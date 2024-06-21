@@ -1,11 +1,12 @@
 import { useMemo, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import { cn } from '@bem-react/classname';
 
 import { Button } from '../../components/Button/Button';
 import AddIcon from '../../assets/icons/icon-plus.svg';
 import { TableView } from '../../components/Table/TableView';
 import { mockData } from '../../assets/mock-data';
-import { CustomModal } from '../../components/CustomModal/CustomModal';
 import { SupplyData } from '../../models/models';
 import { useDeleteSupplyMutation, useGetSuppliesQuery } from '../../store/supplies/supplies.api';
 import { SearchInput } from '../../components/SearchInput/SearchInput';
@@ -18,9 +19,8 @@ const cnSupplies = cn('Supplies');
 export const Supplies = () => {
   const { isLoading, isError, data } = useGetSuppliesQuery();
   const [deleteSupply] = useDeleteSupplyMutation();
-
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [currentSupply, setCurrentSupply] = useState<SupplyData | null>(null);
+  const navigate = useNavigate();
 
   const handleDelete = async (id: string) => {
     try {
@@ -32,15 +32,13 @@ export const Supplies = () => {
   };
 
   const handleEdit = (id: string) => {
-    const supply = data?.find((item) => item.id === id);
-    if (supply) {
-      setCurrentSupply(supply);
-      setModalIsOpen(true);
-    }
+    navigate({
+      search: `?supplyId=${id}`,
+    });
+    setModalIsOpen(true);
   };
 
   const handleClick = () => {
-    setCurrentSupply(null);
     setModalIsOpen(true);
   };
 
@@ -53,7 +51,6 @@ export const Supplies = () => {
 
   const closeModal = () => {
     setModalIsOpen(false);
-    setCurrentSupply(null);
   };
 
   return (
@@ -85,17 +82,11 @@ export const Supplies = () => {
           />
         )}
       </section>
-      <CustomModal
-        isOpen={modalIsOpen}
+      <SupplyForm
+        isModalOpen={modalIsOpen}
+        onCloseModal={closeModal}
         onRequestClose={closeModal}
-        title={currentSupply ? 'Редактировать поставку' : 'Добавить поставку'}
-      >
-        <SupplyForm
-          type={currentSupply ? 'edit' : 'create'}
-          supplyData={currentSupply}
-          onRequestClose={closeModal}
-        />
-      </CustomModal>
+      />
     </main>
   );
 };
