@@ -13,10 +13,6 @@ export const suppliesApi = createApi({
         ? [...result.map(({ id }) => ({ type: 'Supply', id } as const)), { type: 'Supply', id: 'LIST' }]
         : [{ type: 'Supply', id: 'LIST' }]),
     }),
-    getSupplyById: builder.query<SupplyData, string>({
-      query: (id) => `supplies/${id}`,
-      providesTags: (result, error, id) => [{ type: 'Supply', id }],
-    }),
     addSupply: builder.mutation<SupplyData, Partial<SupplyData>>({
       query: (newSupply) => ({
         url: 'supplies',
@@ -48,5 +44,4 @@ export const {
   useAddSupplyMutation,
   useUpdateSupplyMutation,
   useDeleteSupplyMutation,
-  useGetSupplyByIdQuery,
 } = suppliesApi;

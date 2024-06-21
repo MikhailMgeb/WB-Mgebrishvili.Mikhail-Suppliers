@@ -11,7 +11,7 @@ import { FormSelect } from '../FormSelect/FormSelect';
 import { FieldCalendar } from '../FieldCalendar/FieldCalendar';
 import { getAddressForWarehouse } from '../../assets/utils';
 import { SupplyData } from '../../models/models';
-import { useAddSupplyMutation, useGetSupplyByIdQuery, useUpdateSupplyMutation } from '../../store/supplies/supplies.api';
+import { useAddSupplyMutation, useUpdateSupplyMutation } from '../../store/supplies/supplies.api';
 
 import {
   deliveryStatusesOption,
@@ -23,29 +23,27 @@ import {
 import './SupplyForm.css';
 
 type SupplyFormProps = {
-  onRequestClose: () => void;
   isModalOpen: boolean;
   onCloseModal: () => void;
-  supplyId?: string;
+  supplyData?: SupplyData;
 };
 
 const cnSupplyForm = cn('SupplyForm');
 
 export const SupplyForm = ({
-  onRequestClose,
   onCloseModal,
   isModalOpen,
-  supplyId,
+    supplyData
 }: SupplyFormProps) => {
-  const isEditableModal = supplyId !== undefined;
+  const isEditableModal = supplyData !== undefined;
 
   const [addSupply] = useAddSupplyMutation();
   const [updateSupply] = useUpdateSupplyMutation();
-  const { data } = useGetSupplyByIdQuery(supplyId || '', { skip: supplyId === undefined });
+
   const {
-    handleSubmit, control,
+    handleSubmit, control
   } = useForm<SupplyData>({
-    values: data,
+    values: supplyData
   });
 
   const onSubmit = async (formData: SupplyData) => {
@@ -57,26 +55,26 @@ export const SupplyForm = ({
     } catch (error) {
       console.error(error);
     }
-    onRequestClose();
+    onCloseModal();
   };
 
   return (
     <CustomModal
       isOpen={isModalOpen}
       onRequestClose={onCloseModal}
-      title={supplyId ? 'Редактировать поставку' : 'Добавить поставку'}
+      title={isEditableModal ? 'Редактировать поставку' : 'Добавить поставку'}
     >
       <form className={cnSupplyForm()} onSubmit={handleSubmit(onSubmit)}>
         <Controller
           name="date"
           control={control}
           render={({ field: { value, onChange } }) => (
-            <FieldCalendar
-              label="Дата поставки"
-              value={value}
-              onChange={onChange}
-              htmlId="calendar"
-            />
+              <FieldCalendar
+                  label="Дата поставки"
+                  value={value}
+                  onChange={onChange}
+                  htmlId="calendar"
+              />
           )}
         />
 
@@ -154,12 +152,12 @@ export const SupplyForm = ({
         <div className={cnSupplyForm('GroupButton')}>
           <Button
             scheme="primary"
-            text={supplyId ? 'Сохранить' : 'Создать'}
+            text={isEditableModal ? 'Сохранить' : 'Создать'}
           />
           <Button
             scheme="cloudy"
             text="Отменить"
-            onClick={onRequestClose}
+            onClick={onCloseModal}
           />
         </div>
       </form>

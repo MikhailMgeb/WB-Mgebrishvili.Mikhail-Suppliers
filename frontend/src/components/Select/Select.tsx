@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 import { cn } from '@bem-react/classname';
 
 import ChevronDown from '../../assets/icons/icon-chevron-down.svg';
@@ -21,10 +21,6 @@ export const Select = ({
 }: SelectProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(value);
-
-  useEffect(() => {
-    setSelectedOption(value);
-  }, [value]);
 
   const toggleDropdown = () => setIsOpen(!isOpen);
 

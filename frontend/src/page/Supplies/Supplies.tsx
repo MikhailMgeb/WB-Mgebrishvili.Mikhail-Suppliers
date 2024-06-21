@@ -6,7 +6,7 @@ import AddIcon from '../../assets/icons/icon-plus.svg';
 import { TableView } from '../../components/Table/TableView';
 import { mockData } from '../../assets/mock-data';
 import { SupplyData } from '../../models/models';
-import { useDeleteSupplyMutation, useGetSuppliesQuery } from '../../store/supplies/supplies.api';
+import {useDeleteSupplyMutation, useGetSuppliesQuery, useGetSupplyByIdQuery} from '../../store/supplies/supplies.api';
 import { SearchInput } from '../../components/SearchInput/SearchInput';
 import { SupplyForm } from '../../components/SuppliyForm/SuppliyForm';
 
@@ -17,8 +17,8 @@ const cnSupplies = cn('Supplies');
 export const Supplies = () => {
   const { isLoading, isError, data } = useGetSuppliesQuery();
   const [deleteSupply] = useDeleteSupplyMutation();
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [supplyId, setSupplyId] = useState<undefined | string>(undefined);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentSupply, setCurrentSupply] = useState<SupplyData>();
 
   const handleDelete = async (id: string) => {
     try {
@@ -30,12 +30,15 @@ export const Supplies = () => {
   };
 
   const handleEdit = (id: string) => {
-    setSupplyId(id);
-    setModalIsOpen(true);
+   const supply = data?.find((supply) => supply.id === id);
+   if (supply) {
+    setCurrentSupply(supply);
+   }
+    setIsModalOpen(true);
   };
 
   const handleClick = () => {
-    setModalIsOpen(true);
+    setIsModalOpen(true);
   };
 
   const suppliesData: SupplyData[] = useMemo(() => {
@@ -46,8 +49,8 @@ export const Supplies = () => {
   }, [data, isError]);
 
   const closeModal = () => {
-    setModalIsOpen(false);
-    setSupplyId(undefined);
+    setIsModalOpen(false);
+    setCurrentSupply(undefined);
   };
 
   return (
@@ -79,12 +82,13 @@ export const Supplies = () => {
           />
         )}
       </section>
-      <SupplyForm
-        supplyId={supplyId}
-        isModalOpen={modalIsOpen}
-        onCloseModal={closeModal}
-        onRequestClose={closeModal}
-      />
+      {isModalOpen && (
+          <SupplyForm
+              supplyData={currentSupply}
+              isModalOpen={isModalOpen}
+              onCloseModal={closeModal}
+          />
+      )}
     </main>
   );
 };

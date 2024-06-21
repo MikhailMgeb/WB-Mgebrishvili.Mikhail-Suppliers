@@ -23,7 +23,7 @@ export const TextInput = ({
   rightIcon,
   placeholder = '',
   type,
-  value = '',
+  value,
   onChange,
   onClick,
   htmlId,
@@ -37,7 +37,6 @@ export const TextInput = ({
       onChange(newValue);
     }
   };
-
   return (
     <div className={cnTextInput({ type, disabled, 'has-value': !!value }, className)} onClick={onClick}>
       <input
