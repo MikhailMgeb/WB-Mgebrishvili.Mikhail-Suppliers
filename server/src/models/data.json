@@ -1,44 +1,5 @@
 [
   {
-    "date": "2024-06-13",
-    "city": "Тверь",
-    "quantity": 123,
-    "supplyType": "Монопаллета",
-    "warehouseName": "СЦ Абакан",
-    "status": "В пути",
-    "warehouseAddress": "ул. Игарская, д. 21г",
-    "id": "17332b3645a"
-  },
-  {
-    "city": "Абакан",
-    "quantity": 2525215,
-    "supplyType": "Монопаллета",
-    "warehouseName": "Склад",
-    "status": "В пути",
-    "warehouseAddress": "Посёлок Кудьма, логистический комплекс Южный, ул. Индустриальная, 10",
-    "id": "7332b3645a1",
-    "date": "2024-06-03"
-  },
-  {
-    "city": "Абакан",
-    "quantity": 321312,
-    "supplyType": "Монопаллета",
-    "warehouseName": "Склад",
-    "status": "В пути",
-    "warehouseAddress": "Посёлок Кудьма, логистический комплекс Южный, ул. Индустриальная, 10",
-    "id": "ab7278633eb"
-  },
-  {
-    "date": "2024-06-04",
-    "city": "Абакан",
-    "quantity": 321312,
-    "supplyType": "Монопаллета",
-    "warehouseName": "Электросталь",
-    "status": "В пути",
-    "warehouseAddress": "ул. Индустриальная, д. 9/1",
-    "id": "b7278633eb7"
-  },
-  {
     "date": "2024-06-19",
     "city": "Абакан",
     "quantity": 321312,
@@ -57,5 +18,41 @@
     "warehouseAddress": "ул. Игарская, д. 21г",
     "id": "278633eb7c6",
     "date": "2024-06-03"
+  },
+  {
+    "city": "Нижний Новгород",
+    "supplyType": "Короб",
+    "warehouseName": "СЦ Абакан",
+    "status": "Задерживается",
+    "warehouseAddress": "ул. Игарская, д. 21г",
+    "id": "2be1a5b125f",
+    "quantity": 0
+  },
+  {
+    "city": "Кострома",
+    "supplyType": "Монопаллета",
+    "warehouseName": "СЦ Абакан",
+    "status": "В пути",
+    "warehouseAddress": "ул. Игарская, д. 21г",
+    "id": "be1a5b125f7",
+    "quantity": 0
+  },
+  {
+    "warehouseAddress": "Адрес не найден",
+    "id": "e1a5b125f70"
+  },
+  {
+    "warehouseAddress": "Адрес не найден",
+    "id": "1a5b125f70d"
+  },
+  {
+    "warehouseAddress": "Адрес не найден",
+    "id": "a5b125f70d3"
+  },
+  {
+    "quantity": 2,
+    "supplyType": "Монопаллета",
+    "warehouseAddress": "Адрес не найден",
+    "id": "5b125f70d3b"
   }
 ]
