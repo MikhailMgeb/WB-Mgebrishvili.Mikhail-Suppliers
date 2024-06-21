@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 import { FieldWrapper } from '../FieldWrapper/FieldWrapper';
 import { TextInput } from '../TextInput/TextInput';
 
@@ -5,9 +7,9 @@ type FormTextInputProps = {
   label?: string;
   className?: string;
   disabled?: boolean;
-  rightIcon?: React.ReactNode;
+  rightIcon?: ReactNode;
   placeholder?: string;
-  type?: 'text' | 'date' | 'number';
+  type: 'text' | 'number';
   value?: string | number;
   onChange?: (value: string | number) => void;
   htmlId: string;

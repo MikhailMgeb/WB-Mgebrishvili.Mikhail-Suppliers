@@ -1,4 +1,5 @@
 import { cn } from '@bem-react/classname';
+import { ReactNode } from 'react';
 
 import './Button.css';
 
@@ -6,7 +7,7 @@ const cnButton = cn('Button');
 
 type ButtonProps = {
   text?: string;
-  icon?: React.ReactNode;
+  icon?: ReactNode;
   scheme: 'cloudy' | 'primary';
   modification?: 'alpha' | 'base';
   onClick?: () => void;

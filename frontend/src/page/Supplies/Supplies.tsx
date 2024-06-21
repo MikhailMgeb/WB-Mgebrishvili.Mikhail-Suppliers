@@ -11,6 +11,7 @@ import { useDeleteSupplyMutation, useGetSuppliesQuery } from '../../store/suppli
 import { SearchInput } from '../../components/SearchInput/SearchInput';
 
 import './Supplies.css';
+import { SupplyForm } from '../../components/SuppliyForm/SuppliyForm';
 
 const cnSupplies = cn('Supplies');
 
@@ -23,7 +24,7 @@ export const Supplies = () => {
 
   const handleDelete = async (id: string) => {
     try {
-      await deleteSupply(id).unwrap();
+      await deleteSupply(id);
       console.log(`Удалить: ${id}`);
     } catch (error) {
       console.error('Ошибка', error);
@@ -31,7 +32,7 @@ export const Supplies = () => {
   };
 
   const handleEdit = (id: string) => {
-    const supply = suppliesData.find((item) => item.id === id);
+    const supply = data?.find((item) => item.id === id);
     if (supply) {
       setCurrentSupply(supply);
       setModalIsOpen(true);
@@ -87,9 +88,14 @@ export const Supplies = () => {
       <CustomModal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
-        type={currentSupply ? 'edit' : 'create'}
-        supplyData={currentSupply}
-      />
+        title={currentSupply ? 'Редактировать поставку' : 'Добавить поставку'}
+      >
+        <SupplyForm
+          type={currentSupply ? 'edit' : 'create'}
+          supplyData={currentSupply}
+          onRequestClose={closeModal}
+        />
+      </CustomModal>
     </main>
   );
 };

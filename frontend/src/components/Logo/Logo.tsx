@@ -1,4 +1,4 @@
-import React from 'react';
+import { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { cn } from '@bem-react/classname';
 
@@ -7,7 +7,7 @@ import './Logo.css';
 const cnLogo = cn('Logo');
 
 type LogoProps = {
-  logoComponent: React.ReactNode;
+  logoComponent: ReactNode;
   linkTo: string;
 };
 

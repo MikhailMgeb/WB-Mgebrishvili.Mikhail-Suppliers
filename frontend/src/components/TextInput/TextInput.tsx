@@ -1,4 +1,4 @@
-import type { ChangeEvent } from 'react';
+import type { ChangeEvent, ReactNode } from 'react';
 import { cn } from '@bem-react/classname';
 
 import './TextInput.css';
@@ -8,7 +8,7 @@ const cnTextInput = cn('TextInput');
 type TextInputProps = {
   className?: string;
   disabled?: boolean;
-  rightIcon?: React.ReactNode;
+  rightIcon?: ReactNode;
   placeholder?: string;
   type?: 'text' | 'search' | 'number';
   value?: string | number;

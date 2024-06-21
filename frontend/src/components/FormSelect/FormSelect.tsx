@@ -7,6 +7,7 @@ type FormSelectProps = {
   options: string[];
   htmlId: string;
   value: string;
+  type: 'text' | 'search';
 };
 
 export const FormSelect = ({
@@ -15,6 +16,7 @@ export const FormSelect = ({
   options,
   htmlId,
   value,
+  type,
 }: FormSelectProps) => {
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement> | string | number) => {
     if (typeof event === 'string' || typeof event === 'number') {
@@ -36,6 +38,7 @@ export const FormSelect = ({
         options={options}
         htmlId={htmlId}
         value={value}
+        type={type}
       />
     </FieldWrapper>
   );
