@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ru } from 'date-fns/locale/ru';
 import { cn } from '@bem-react/classname';
 import { format } from 'date-fns';

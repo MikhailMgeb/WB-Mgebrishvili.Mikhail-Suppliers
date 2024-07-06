@@ -27,14 +27,14 @@ export const suppliesApi = createApi({
         method: 'PUT',
         body: updatedSupply,
       }),
-      invalidatesTags: (result, error, { id }) => [{ type: 'Supply', id }],
+      invalidatesTags: (_result, _error, { id }) => [{ type: 'Supply', id }],
     }),
     deleteSupply: builder.mutation<void, string>({
       query: (id) => ({
         url: `supplies/${id}`,
         method: 'DELETE',
       }),
-      invalidatesTags: (result, error, id) => [{ type: 'Supply', id }],
+      invalidatesTags: (_result, _error, id) => [{ type: 'Supply', id }],
     }),
   }),
 });
